@@ -2,6 +2,7 @@ import React from "react";
 import "@/assets/styles/globals.css";
 
 import NavBar from "@/components/NavBar";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "A-Rent | Find The Perfect Rental",
@@ -13,9 +14,10 @@ export const metadata = {
 const MainLayout = ({ children }) => {
   return (
     <html lang="en">
-      <body>
+      <body className="flex flex-col min-height: 100vh;">
         <NavBar />
-        <main>{children}</main>
+        <main className="flex-grow: 1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

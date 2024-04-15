@@ -80,6 +80,12 @@ function NavBar() {
                     Add Property
                   </LinkButton>
                 )}
+                <LinkButton href="/properties" type="primary">
+                  For Renters
+                </LinkButton>
+                <LinkButton href="/properties/add" type="primary">
+                  For Owners
+                </LinkButton>
               </div>
             </div>
           </div>
