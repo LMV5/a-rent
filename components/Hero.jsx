@@ -18,7 +18,7 @@ function Hero() {
             <input
               type="text"
               id="location"
-              placeholder="Enter Location (City, State, Zip, etc)"
+              placeholder="Enter Location (City, Country, Zip, etc)"
               className="w-full px-4 py-3 rounded-lg bg-white text-gray-800 focus:outline-none focus:ring focus:ring-blue-500"
             />
           </div>
@@ -32,12 +32,7 @@ function Hero() {
             >
               <option value="All">All</option>
               <option value="Apartment">Apartment</option>
-              <option value="Studio">Studio</option>
-              <option value="Condo">Condo</option>
-              <option value="House">House</option>
-              <option value="Cabin Or Cottage">Cabin or Cottage</option>
-              <option value="Loft">Loft</option>
-              <option value="Room">Room</option>
+              <option value="Hotel">Hotel</option>
               <option value="Other">Other</option>
             </select>
           </div>
