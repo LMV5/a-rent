@@ -6,7 +6,7 @@ export const metadata = {
   title: "A-Rent | Find The Perfect Rental",
 };
 
-const HomePage = async () => {
+const HomePage = () => {
   return (
     <>
       <Hero />
