@@ -51,8 +51,8 @@ const PropertyCard = ({ property }) => {
           </p>
           <p>
             <FaRulerCombined className="inline mr-2" />
-            {property.square_feet}{" "}
-            <span className="md:hidden lg:inline">sqft</span>
+            {property.square_metre}{" "}
+            <span className="md:hidden lg:inline">m&#178;</span>
           </p>
         </div>
 
