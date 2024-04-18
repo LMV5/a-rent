@@ -8,7 +8,7 @@ function PropertyHeaderImage({ image }) {
           <Image
             src={`/images/${image}`}
             alt="image of property"
-            className="object-cover h-[400px] w-full"
+            className="object-cover h-[400px] size-max m-auto"
             width={0}
             height={0}
             sizes="100vw"
