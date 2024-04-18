@@ -190,6 +190,9 @@ function NavBar() {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                      }}
                     >
                       Your Profile
                     </Link>
@@ -199,10 +202,17 @@ function NavBar() {
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                      }}
                     >
                       Saved Properties
                     </Link>
-                    <a
+                    <button
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                        signOut();
+                      }}
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700"
                       role="menuitem"
@@ -210,7 +220,7 @@ function NavBar() {
                       id="user-menu-item-2"
                     >
                       Sign Out
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>
