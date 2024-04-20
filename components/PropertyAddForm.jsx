@@ -5,28 +5,28 @@ import { useState, useEffect } from "react";
 function PropertyAddForm() {
   const [mounted, setMounted] = useState();
   const [fields, setFields] = useState({
-    type: "Apartment",
-    name: "Test Property name",
+    type: "",
+    name: "",
     description: "",
     location: {
       street: "",
-      city: "Test City",
-      country: "Test Country",
+      city: "",
+      country: "",
       zipcode: "",
     },
-    beds: "3",
-    baths: "2",
-    square_metre: "94",
+    beds: "",
+    baths: "",
+    square_metre: "",
     amenities: [],
     rates: {
       weekly: "",
-      monthly: "2000",
+      monthly: "",
       nightly: "",
     },
     seller_info: {
-      name: "JOe",
-      email: "test@test.com",
-      phone: "123456",
+      name: "",
+      email: "",
+      phone: "",
     },
     images: [],
   });
