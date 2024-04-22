@@ -41,7 +41,32 @@ function ProfilePage() {
     }
   }, [session]);
 
-  const handleDeleteProperty = function () {};
+  const handleDeleteProperty = async function (propertyId) {
+    const confirmed = window.confirm(
+      "Are you sure you want do delete this property?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/api/properties/${propertyId}`, {
+        method: "DELETE",
+      });
+
+      if (res.status === 200) {
+        const updatedProperties = properties.filter(
+          (property) => property._id !== propertyId
+        );
+        setProperties(updatedProperties);
+        console.log("Property Deleted");
+      } else {
+        console.log("Failed to delete property");
+      }
+    } catch (error) {
+      console.log(error);
+      console.log("Failed to delete property");
+    }
+  };
 
   return (
     <section className="bg-blue-200">
