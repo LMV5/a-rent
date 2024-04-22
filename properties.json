@@ -81,7 +81,7 @@
     "seller_info": {
       "name": "John Smith",
       "email": "john.smith@example.com",
-      "phone": "+1(555)123-4567"
+      "phone": "+15551234567"
     },
     "images": ["b1.jpg", "b2.jpg", "b3.jpg"],
     "is_featured": false,
@@ -95,7 +95,7 @@
     "type": "Hotel",
     "description": "Unwind in style and comfort at our beachfront resort, where breathtaking ocean views, world-class dining, and endless leisure activities await.",
     "location": {
-      "street": "Oak Lane",
+      "street": "5 Oak Lane",
       "city": "Birchfield",
       "country": "United Kingdom",
       "zipcode": "90001"
