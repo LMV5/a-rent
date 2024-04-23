@@ -3,6 +3,8 @@ import "@/assets/styles/globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "A-Rent | Find The Perfect Rental",
@@ -18,6 +20,7 @@ const MainLayout = ({ children }) => {
           <NavBar />
           <main className="flex-grow: 1">{children}</main>
           <Footer />
+          <ToastContainer />
         </body>
       </html>
     </AuthProvider>
