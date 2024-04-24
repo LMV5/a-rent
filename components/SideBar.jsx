@@ -1,11 +1,96 @@
-function SideBar() {
+import { FaBookmark, FaShare, FaPaperPlane } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
+
+function SideBar({ property }) {
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!userId) {
+      setLoading(false);
+      return;
+    }
+
+    const checkBookmarkStatus = async () => {
+      try {
+        const res = await fetch("/api/bookmarks/check", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            propertyId: property._id,
+          }),
+        });
+
+        if (res.status === 200) {
+          const data = await res.json();
+          setIsBookmarked(data.isBookmarked);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkBookmarkStatus();
+  }, [property._id, userId]);
+
+  const handleClick = async () => {
+    if (!userId) {
+      toast.error("You need to sign in to bookmark a property");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/bookmarks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          propertyId: property._id,
+        }),
+      });
+
+      if (res.status === 200) {
+        const data = await res.json();
+        toast.success(data.message);
+        setIsBookmarked(data.isBookmarked);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
+  };
+
+  if (loading) return <p className="text-center">Loading...</p>;
+
   return (
     <aside className="space-y-4">
-      <button className="bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
-        <i className="fas fa-bookmark mr-2"></i> Bookmark Property
-      </button>
+      {isBookmarked ? (
+        <button
+          onClick={handleClick}
+          className="bg-red-500 hover:bg-red-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+        >
+          <FaBookmark className="mr-2" /> Remove Bookmark
+        </button>
+      ) : (
+        <button
+          onClick={handleClick}
+          className="bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+        >
+          <FaBookmark className="mr-2" /> Bookmark Property
+        </button>
+      )}
+
       <button className="bg-slate-700 hover:bg-slate-800 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
-        <i className="fas fa-share mr-2"></i> Share Property
+        <FaShare className="mr-2" /> Share Property
       </button>
 
       <div className="bg-white p-6 rounded-lg shadow-md">
@@ -73,7 +158,7 @@ function SideBar() {
               className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
               type="submit"
             >
-              <i className="fas fa-paper-plane mr-2"></i> Send Message
+              <FaPaperPlane className="mr-2" /> Send Message
             </button>
           </div>
         </form>
