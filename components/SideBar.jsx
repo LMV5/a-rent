@@ -1,13 +1,25 @@
-import { FaBookmark, FaShare, FaPaperPlane } from "react-icons/fa";
+import { FaBookmark, FaPaperPlane } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  TelegramShareButton,
+  EmailShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  TelegramIcon,
+  EmailIcon,
+} from "react-share";
 
 function SideBar({ property }) {
   const { data: session } = useSession();
   const userId = session?.user?.id;
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [loading, setLoading] = useState(true);
+
+  const shareUrl = `${process.env.NEXT_PUBLIC_DOMAIN}/properties/${property._id}`;
 
   useEffect(() => {
     if (!userId) {
@@ -89,9 +101,40 @@ function SideBar({ property }) {
         </button>
       )}
 
-      <button className="bg-slate-700 hover:bg-slate-800 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
-        <FaShare className="mr-2" /> Share Property
-      </button>
+      <div>
+        <h3 className="text-xl font-bold text-center pt-2">
+          Share this property:
+        </h3>
+        <div className="flex gap-3 justify-center pb-5">
+          <FacebookShareButton
+            url={shareUrl}
+            quote={property.name}
+            hashtag={`#${property.type}ForRent`}
+          >
+            <FacebookIcon size={40} round={true} />
+          </FacebookShareButton>
+
+          <TwitterShareButton
+            url={shareUrl}
+            title={property.name}
+            hashtags={[`${property.type}ForRent`]}
+          >
+            <TwitterIcon size={40} round={true} />
+          </TwitterShareButton>
+
+          <TelegramShareButton url={shareUrl} quote={property.name}>
+            <TelegramIcon size={40} round={true} />
+          </TelegramShareButton>
+
+          <EmailShareButton
+            url={shareUrl}
+            subject={property.name}
+            body={"Check out this property listing:"}
+          >
+            <EmailIcon size={40} round={true} />
+          </EmailShareButton>
+        </div>
+      </div>
 
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
