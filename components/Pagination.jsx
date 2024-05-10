@@ -1,36 +1,36 @@
-// import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-// function Pagination({ page, pageSize, totalItems, onPageChange }) {
-//   const totalPages = Math.ceil(totalItems / pageSize);
+function Pagination({ page, pageSize, totalItems, onPageChange }) {
+  const totalPages = Math.ceil(totalItems / pageSize);
 
-//   function handlePageChange(newPage) {
-//     if (newPage >= 1 && newPage <= totalPages) {
-//       onPageChange(newPage);
-//     }
-//   }
+  function handlePageChange(newPage) {
+    if (newPage >= 1 && newPage <= totalPages) {
+      onPageChange(newPage);
+    }
+  }
 
-//   return (
-//     <section className="container mx-auto flex justify-center items-center my-8">
-//       <button
-//         className="mr-3 px-2 py-1 border border-gray-300 rounded"
-//         disabled={page === 1}
-//         onClick={() => handlePageChange(page - 1)}
-//       >
-//         <FaArrowLeft />
-//       </button>
-//       <span className="mx-2">
-//         {" "}
-//         Page {page} of {totalPages}{" "}
-//       </span>
-//       <button
-//         className="ml-2 px-2 py-1 border border-gray-300 rounded"
-//         disabled={page === totalPages}
-//         onClick={() => handlePageChange(page + 1)}
-//       >
-//         <FaArrowRight />
-//       </button>
-//     </section>
-//   );
-// }
+  return (
+    <section className="container mx-auto flex justify-center items-center my-8">
+      <button
+        className="mr-3 px-2 py-1 border border-gray-300 rounded"
+        disabled={page === 1}
+        onClick={() => handlePageChange(page - 1)}
+      >
+        <FaArrowLeft />
+      </button>
+      <span className="mx-2">
+        {" "}
+        Page {page} of {totalPages}{" "}
+      </span>
+      <button
+        className="ml-2 px-2 py-1 border border-gray-300 rounded"
+        disabled={page === totalPages}
+        onClick={() => handlePageChange(page + 1)}
+      >
+        <FaArrowRight />
+      </button>
+    </section>
+  );
+}
 
-// export default Pagination;
+export default Pagination;

@@ -9,9 +9,19 @@ export const GET = async (request) => {
   try {
     await connectDB();
 
-    const properties = await Property.find({});
+    const page = request.nextUrl.searchParams.get("page") || 1;
+    const pageSize = request.nextUrl.searchParams.get("pageSize") || 6;
 
-    return new Response(JSON.stringify(properties), {
+    const skip = (page - 1) * pageSize;
+    const total = await Property.countDocuments({});
+    const properties = await Property.find({}).skip(skip).limit(pageSize);
+
+    const result = {
+      total,
+      properties,
+    };
+
+    return new Response(JSON.stringify(result), {
       status: 200,
     });
   } catch (error) {
@@ -85,9 +95,6 @@ export const POST = async (request) => {
     const newProperty = new Property(propertyData);
     await newProperty.save();
 
-    // return new Response(JSON.stringify({ message: "Success" }), {
-    //   status: 200,
-    // });
     return Response.redirect(
       `${process.env.NEXTAUTH_URL}/properties/${newProperty._id}`
     );
