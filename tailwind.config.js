@@ -30,7 +30,6 @@ module.exports = {
       persianGreenLight: "#1D997B",
       red: "#ED254E",
       ashGray: "#A2A392",
-      cosmicLatte: "#FAF9F3",
     },
   },
   plugins: [],

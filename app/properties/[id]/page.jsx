@@ -57,7 +57,7 @@ const PropertyPage = () => {
               </LinkButton>
             </div>
           </section>
-          <section className="bg-cosmicLatte">
+          <section>
             <div className="container m-auto py-10 px-6">
               <div className="grid grid-cols-1 md:grid-cols-70-50 w-full gap-6">
                 <PropertyDetails property={property} />

@@ -7,7 +7,7 @@ import profileDefault from "@/assets/images/profile.png";
 import { useState, useEffect } from "react";
 import Spinner from "@/components/Spinner";
 import { toast } from "react-toastify";
-import LinkButton from "@/components/LinkButton";
+import { FaRegTrashAlt, FaRegEdit } from "react-icons/fa";
 
 function ProfilePage() {
   const { data: session } = useSession();
@@ -71,27 +71,30 @@ function ProfilePage() {
   };
 
   return (
-    <section className="bg-blue-200">
+    <section>
       <div className="m-auto py-24">
-        <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-          <h1 className="text-3xl font-bold mb-4">Your Profile</h1>
+        <div className="px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
+          <h1 className="text-3xl font-bold mb-4 ml-8">Your Profile</h1>
           <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/4 mt-10 md:mx-10">
+            <div className="md:w-1/4 my-2 md:mx-10 flex justify-around md:flex-col md:justify-start">
               <div className="mb-4">
                 <Image
-                  className="h-32 w-32 md:h-48 md:w-48 rounded-full mx-auto md:mx-0"
+                  className="h-24 w-24 md:h-24 md:w-424 rounded-full"
                   src={profileImage || profileDefault}
                   alt="photo of the user"
                   width={200}
                   height={200}
                 />
               </div>
-              <h2 className="text-base md:text-xl mb-4">
-                <span className="font-bold block">Name: </span> {profileName}
-              </h2>
-              <h2 className="text-base md:text-xl">
-                <span className="font-bold block">Email: </span> {profileEmail}
-              </h2>
+              <div>
+                <h2 className="text-base md:text-xl mb-4">
+                  <span className="font-bold block">Name: </span> {profileName}
+                </h2>
+                <h2 className="text-base md:text-xl">
+                  <span className="font-bold block">Email: </span>{" "}
+                  {profileEmail}
+                </h2>
+              </div>
             </div>
 
             <div className="md:w-3/4 md:pl-4">
@@ -103,10 +106,13 @@ function ProfilePage() {
                 <Spinner loading={loading} />
               ) : (
                 properties.map((property) => (
-                  <div key={property._id} className="mb-10">
+                  <div
+                    key={property._id}
+                    className="mb-10 grid grid-cols-1 border rounded-lg md:grid-cols-2"
+                  >
                     <Link href={`/properties/${property._id}`}>
                       <Image
-                        className="h-32 w-full rounded-md object-cover"
+                        className="h-32 rounded-md object-cover"
                         src={property.images[0]}
                         alt="image of the property"
                         width={1000}
@@ -114,7 +120,7 @@ function ProfilePage() {
                         priority={true}
                       />
                     </Link>
-                    <div className="flex justify-between mt-2">
+                    <div className="flex justify-between mt-2 ml-4">
                       <div>
                         <p className="text-lg font-semibold">{property.name}</p>
                         <p className="text-gray-600">
@@ -128,16 +134,16 @@ function ProfilePage() {
                       <div className="mt-2 flex flex-col">
                         <Link
                           href={`/properties/${property._id}/edit`}
-                          className="bg-periwinkle text-gray px-3 py-2 rounded-md mt-2"
+                          className="px-3 py-2 rounded-md mt-2"
                         >
-                          Edit
+                          <FaRegEdit />
                         </Link>
                         <button
                           onClick={() => handleDeleteProperty(property._id)}
-                          className="bg-red text-teaGreen px-3 py-2 rounded-md mt-2"
+                          className="px-3 py-2 rounded-md mt-2"
                           type="button"
                         >
-                          Delete
+                          <FaRegTrashAlt />
                         </button>
                       </div>
                     </div>
