@@ -7,6 +7,7 @@ import profileDefault from "@/assets/images/profile.png";
 import { useState, useEffect } from "react";
 import Spinner from "@/components/Spinner";
 import { toast } from "react-toastify";
+import LinkButton from "@/components/LinkButton";
 
 function ProfilePage() {
   const { data: session } = useSession();
@@ -124,16 +125,16 @@ function ProfilePage() {
                           {property.location.country}
                         </p>
                       </div>
-                      <div className="mt-2">
+                      <div className="mt-2 flex flex-col">
                         <Link
                           href={`/properties/${property._id}/edit`}
-                          className="bg-blue-400 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-500"
+                          className="bg-periwinkle text-gray px-3 py-2 rounded-md mt-2"
                         >
                           Edit
                         </Link>
                         <button
                           onClick={() => handleDeleteProperty(property._id)}
-                          className="bg-red-400 text-white px-3 py-2 rounded-md hover:bg-red-500 mt-2"
+                          className="bg-red text-teaGreen px-3 py-2 rounded-md mt-2"
                           type="button"
                         >
                           Delete

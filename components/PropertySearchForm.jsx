@@ -55,7 +55,7 @@ function PropertySearchForm() {
       </div>
       <button
         type="submit"
-        className="bg-darkPurple md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 rounded-lg bg-blue-700 text-teaGreen hover:bg-blue-500 focus:outline-none focus:ring focus:ring-blue-500"
+        className="bg-darkPurple md:ml-4 mt-4 md:mt-0 w-full md:w-auto px-6 py-3 rounded-lg bg-blue-700 text-teaGreen hover:bg-purple focus:outline-none focus:ring focus:ring-blue-500"
       >
         Search
       </button>

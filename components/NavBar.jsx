@@ -66,19 +66,14 @@ function NavBar() {
             {/* <!-- Desktop Menu Hidden below md screens --> */}
             <div className="hidden md:ml-6 md:block">
               <div className="flex space-x-2">
-                <LinkButton
-                  href="/"
-                  type="primary"
-                  // active={`${pathName === "/" ? "bg-black" : ""} `}
-                >
+                <LinkButton href="/" type="primary">
                   Home
                 </LinkButton>
-                <LinkButton
-                  href="/properties"
-                  type="primary"
-                  // active={`${pathName === "/properties" ? "bg-black" : ""} `}
-                >
+                <LinkButton href="/properties" type="primary">
                   Properties
+                </LinkButton>
+                <LinkButton href="/properties/add" type="primary">
+                  Add property
                 </LinkButton>
               </div>
             </div>
@@ -156,15 +151,15 @@ function NavBar() {
                 {isProfileMenuOpen && (
                   <div
                     id="user-menu"
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-teaGreen py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"
                     tabIndex="-1"
                   >
-                    <LinkButton
+                    <Link
                       href="/profile"
-                      type="dropdownMenu"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
@@ -173,10 +168,10 @@ function NavBar() {
                       }}
                     >
                       Your Profile
-                    </LinkButton>
-                    <LinkButton
+                    </Link>
+                    <Link
                       href="/properties/saved"
-                      type="dropdownMenu"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
@@ -185,7 +180,7 @@ function NavBar() {
                       }}
                     >
                       Saved Properties
-                    </LinkButton>
+                    </Link>
                     <button
                       onClick={() => {
                         setIsProfileMenuOpen(false);

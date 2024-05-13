@@ -4,6 +4,7 @@ import { FaBookmark, FaPaperPlane } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { toast } from "react-toastify";
+import LinkButton from "./LinkButton";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -135,19 +136,13 @@ function SideBar({ property }) {
   return (
     <aside className="space-y-4">
       {isBookmarked ? (
-        <button
-          onClick={handleClick}
-          className="bg-red-500 hover:bg-red-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
-        >
+        <LinkButton onClick={handleClick} type="removeBookmark">
           <FaBookmark className="mr-2" /> Remove Bookmark
-        </button>
+        </LinkButton>
       ) : (
-        <button
-          onClick={handleClick}
-          className="bg-fuchsia-800 hover:bg-fuchsia-900 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
-        >
+        <LinkButton onClick={handleClick} type="addBookmark">
           <FaBookmark className="mr-2" /> Bookmark Property
-        </button>
+        </LinkButton>
       )}
 
       <div>
@@ -262,7 +257,7 @@ function SideBar({ property }) {
             </div>
             <div>
               <button
-                className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+                className="bg-darkPurple hover:bg-purple text-teaGreen font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
                 type="submit"
               >
                 <FaPaperPlane className="mr-2" /> Send Message

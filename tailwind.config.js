@@ -11,13 +11,8 @@ module.exports = {
         sans: ["Poppins", "sans-serif"],
       },
       gridTemplateColumns: {
-        "70-30": "70% 28%",
+        "70-50": "70% 50%",
       },
-      // backgroundImage: {
-      //   "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      //   "gradient-conic":
-      //     "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-      // },
     },
     screens: {
       ssm: "400px",
@@ -32,8 +27,10 @@ module.exports = {
       periwinkle: "#B1C7EE",
       teaGreen: "#CBF3D1",
       persianGreen: "#1B998B",
+      persianGreenLight: "#1D997B",
       red: "#ED254E",
       ashGray: "#A2A392",
+      cosmicLatte: "#FAF9F3",
     },
   },
   plugins: [],

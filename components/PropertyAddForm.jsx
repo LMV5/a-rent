@@ -95,12 +95,12 @@ function PropertyAddForm() {
         method="POST"
         encType="multipart/form-data"
       >
-        <h2 className="text-3xl text-center font-semibold mb-6">
+        <h2 className="text-3xl text-center font-semibold mb-6 text-gray">
           Add Property
         </h2>
 
         <div className="mb-4">
-          <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
+          <label htmlFor="type" className="block text-gray font-bold mb-2">
             Property Type
           </label>
           <select
@@ -117,9 +117,7 @@ function PropertyAddForm() {
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
-            Listing Name
-          </label>
+          <label className="block text-gray font-bold mb-2">Listing Name</label>
           <input
             type="text"
             id="name"
@@ -149,8 +147,8 @@ function PropertyAddForm() {
           ></textarea>
         </div>
 
-        <div className="mb-4 bg-blue-50 p-4">
-          <label className="block text-gray-700 font-bold mb-2">Location</label>
+        <div className="mb-4 p-4">
+          <label className="block text-gray font-bold mb-2">Location</label>
           <input
             type="text"
             id="street"
@@ -193,10 +191,7 @@ function PropertyAddForm() {
 
         <div className="mb-4 flex flex-wrap">
           <div className="w-full sm:w-1/3 pr-2">
-            <label
-              htmlFor="beds"
-              className="block text-gray-700 font-bold mb-2"
-            >
+            <label htmlFor="beds" className="block text-gray font-bold mb-2">
               Beds
             </label>
             <input
@@ -210,10 +205,7 @@ function PropertyAddForm() {
             />
           </div>
           <div className="w-full sm:w-1/3 px-2">
-            <label
-              htmlFor="baths"
-              className="block text-gray-700 font-bold mb-2"
-            >
+            <label htmlFor="baths" className="block text-gray font-bold mb-2">
               Baths
             </label>
             <input
@@ -229,7 +221,7 @@ function PropertyAddForm() {
           <div className="w-full sm:w-1/3 pl-2">
             <label
               htmlFor="square_metre"
-              className="block text-gray-700 font-bold mb-2"
+              className="block text-gray font-bold mb-2"
             >
               Square Metre
             </label>
@@ -246,9 +238,7 @@ function PropertyAddForm() {
         </div>
 
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2">
-            Amenities
-          </label>
+          <label className="block text-gray font-bold mb-2">Amenities</label>
           <div className="grid grid-cols-1 ssm:grid-cols-2 md:grid-cols-3 gap-2">
             <div>
               <input
@@ -438,7 +428,7 @@ function PropertyAddForm() {
         </div>
 
         <div className="mb-4 bg-blue-50 p-4">
-          <label className="block text-gray-700 font-bold mb-2">
+          <label className="block text-gray font-bold mb-2">
             Rates (Leave blank if not applicable)
           </label>
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
@@ -487,7 +477,7 @@ function PropertyAddForm() {
         <div className="mb-4">
           <label
             htmlFor="seller_name"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-gray font-bold mb-2"
           >
             Seller Name
           </label>
@@ -504,7 +494,7 @@ function PropertyAddForm() {
         <div className="mb-4">
           <label
             htmlFor="seller_email"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-gray font-bold mb-2"
           >
             Seller Email
           </label>
@@ -522,7 +512,7 @@ function PropertyAddForm() {
         <div className="mb-4">
           <label
             htmlFor="seller_phone"
-            className="block text-gray-700 font-bold mb-2"
+            className="block text-gray font-bold mb-2"
           >
             Seller Phone
           </label>
@@ -538,10 +528,7 @@ function PropertyAddForm() {
         </div>
 
         <div className="mb-4">
-          <label
-            htmlFor="images"
-            className="block text-gray-700 font-bold mb-2"
-          >
+          <label htmlFor="images" className="block text-gray font-bold mb-2">
             Images (Select up to 4 images)
           </label>
           <input
@@ -558,7 +545,7 @@ function PropertyAddForm() {
 
         <div>
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+            className="bg-teaGreen hover:bg-persianGreen text-gray font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Add Property
