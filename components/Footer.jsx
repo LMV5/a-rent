@@ -1,22 +1,17 @@
-import Image from "next/image";
-import logo from "@/assets/images/logo.png";
-import Link from "next/link";
+import LinkButton from "./LinkButton";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="flex bg-gray-200 py-4 mt-auto">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-        <div className="mb-4 md:mb-0">
-          <Image src={logo} alt="Logo" className="h-8 w-auto" />
-        </div>
         <div className="flex flex-wrap justify-center md:justify-start mb-4 md:mb-0">
           <ul className="flex space-x-4">
-            <li>
-              <Link href="/properties">Properties</Link>
+            <li className="hover:underline">
+              <LinkButton href="/properties">Properties</LinkButton>
             </li>
-            <li>
-              <Link href="/terms">Terms of Service</Link>
+            <li className="hover:underline">
+              <LinkButton href="/terms">Terms of Service</LinkButton>
             </li>
           </ul>
         </div>

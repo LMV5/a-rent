@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "@/context/GlobalContext";
+import LinkButton from "./LinkButton";
 
 function Message({ message }) {
   const [isRead, setIsRead] = useState(message.read);
@@ -53,9 +54,9 @@ function Message({ message }) {
   }
 
   return (
-    <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200 flex justify-between">
+    <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200 flex justify-between flex-col sm:flex-row">
       {!isRead && (
-        <div className="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 mx-2 rounded-md">
+        <div className="absolute top-2 right-2 bg-teaGreen text-gray px-2 py-1 mx-2 rounded-md">
           New
         </div>
       )}
@@ -90,20 +91,15 @@ function Message({ message }) {
         </ul>
       </div>
       <div className="py-5 flex flex-col">
-        <button
+        <LinkButton
           onClick={handleReadClick}
-          className={`mt-4 ${
-            isRead ? "bg-gray-300" : "bg-blue-500 text-white"
-          } py-1 px-3 rounded-md`}
+          type={`${isRead ? "read" : "new"}`}
         >
           {isRead ? "Mark As New" : "Mark As Read"}
-        </button>
-        <button
-          onClick={handleDeleteClick}
-          className="mt-4 bg-red-500 text-white py-1 px-3 rounded-md"
-        >
+        </LinkButton>
+        <LinkButton onClick={handleDeleteClick} type="delete">
           Delete
-        </button>
+        </LinkButton>
       </div>
     </div>
   );

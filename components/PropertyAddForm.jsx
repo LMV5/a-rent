@@ -249,7 +249,7 @@ function PropertyAddForm() {
           <label className="block text-gray-700 font-bold mb-2">
             Amenities
           </label>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 ssm:grid-cols-2 md:grid-cols-3 gap-2">
             <div>
               <input
                 type="checkbox"

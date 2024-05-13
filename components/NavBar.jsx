@@ -4,11 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
-import Logo from "./Logo";
 import LinkButton from "./LinkButton";
+import Logo from "./Logo";
 import { FaGoogle } from "react-icons/fa";
 import MobileMenu from "./MobileMenu";
-import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import UnreadMessageCount from "./UnreadMessageCount";
 
@@ -19,7 +18,6 @@ function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
-  const pathName = usePathname();
 
   useEffect(() => {
     const setAuthProviders = async () => {
@@ -30,7 +28,7 @@ function NavBar() {
   }, []);
 
   return (
-    <nav className="bg-indigo-700 border-b border-blue-500">
+    <nav className="bg-teaGreen border-b border-periwinkle">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -44,7 +42,7 @@ function NavBar() {
               onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
             >
               <span className="absolute -inset-0.5"></span>
-              <span className="sr-only">Open main menu</span>
+              {/* <span className="sr-only">Open main menu</span> */}
               <svg
                 className="block h-6 w-6"
                 fill="none"
@@ -71,33 +69,16 @@ function NavBar() {
                 <LinkButton
                   href="/"
                   type="primary"
-                  active={`${pathName === "/" ? "bg-black" : ""} `}
+                  // active={`${pathName === "/" ? "bg-black" : ""} `}
                 >
                   Home
                 </LinkButton>
                 <LinkButton
                   href="/properties"
                   type="primary"
-                  active={`${pathName === "/properties" ? "bg-black" : ""} `}
+                  // active={`${pathName === "/properties" ? "bg-black" : ""} `}
                 >
                   Properties
-                </LinkButton>
-                {session && (
-                  <LinkButton
-                    href="/properties/add"
-                    type="primary"
-                    active={`${
-                      pathName === "/properties/add" ? "bg-black" : ""
-                    } `}
-                  >
-                    Add Property
-                  </LinkButton>
-                )}
-                <LinkButton href="/properties" type="primary">
-                  For Renters
-                </LinkButton>
-                <LinkButton href="/properties/add" type="primary">
-                  For Owners
                 </LinkButton>
               </div>
             </div>
@@ -109,14 +90,14 @@ function NavBar() {
               <div className="flex items-center">
                 {providers &&
                   Object.values(providers).map((provider, index) => (
-                    <button
+                    <LinkButton
                       onClick={() => signIn(provider.id)}
                       key={index}
-                      className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2"
+                      type="mobileMenu"
                     >
                       <FaGoogle className="text-white mr-2" />
                       <span>Login or Register</span>
-                    </button>
+                    </LinkButton>
                   ))}
               </div>
             </div>
@@ -149,12 +130,13 @@ function NavBar() {
                 </button>
                 <UnreadMessageCount session={session} />
               </Link>
+
               {/* <!-- Profile dropdown button --> */}
+
               <div className="relative ml-3">
                 <div>
-                  <button
+                  <LinkButton
                     type="button"
-                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                     id="user-menu-button"
                     aria-expanded="false"
                     aria-haspopup="true"
@@ -169,10 +151,8 @@ function NavBar() {
                       width={40}
                       height={40}
                     />
-                  </button>
+                  </LinkButton>
                 </div>
-
-                {/* <!-- Profile dropdown --> */}
                 {isProfileMenuOpen && (
                   <div
                     id="user-menu"
@@ -182,9 +162,9 @@ function NavBar() {
                     aria-labelledby="user-menu-button"
                     tabIndex="-1"
                   >
-                    <Link
+                    <LinkButton
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      type="dropdownMenu"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
@@ -193,10 +173,10 @@ function NavBar() {
                       }}
                     >
                       Your Profile
-                    </Link>
-                    <Link
+                    </LinkButton>
+                    <LinkButton
                       href="/properties/saved"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      type="dropdownMenu"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
@@ -205,14 +185,14 @@ function NavBar() {
                       }}
                     >
                       Saved Properties
-                    </Link>
+                    </LinkButton>
                     <button
                       onClick={() => {
                         setIsProfileMenuOpen(false);
                         signOut();
                       }}
                       href="#"
-                      className="block px-4 py-2 text-sm text-gray-700"
+                      className="px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
@@ -227,7 +207,6 @@ function NavBar() {
         </div>
       </div>
 
-      {/* <!-- Mobile menu, show/hide based on menu state. --> */}
       {isMobileMenuOpen && (
         <MobileMenu session={session} providers={providers} signIn={signIn} />
       )}

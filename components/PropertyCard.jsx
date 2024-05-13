@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LinkButton from "./LinkButton";
 import {
   FaBed,
   FaBath,
@@ -35,13 +36,13 @@ const PropertyCard = ({ property }) => {
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
           <div className="text-gray-600">{property.type}</div>
-          <h3 className="text-xl font-bold">{property.name}</h3>
+          <h3 className="text-xl font-bold text-gray">{property.name}</h3>
         </div>
-        <h3 className="absolute top-[10px] right-[10px] bg-white px-4 py-2 rounded-lg text-blue-500 font-bold text-right md:text-center lg:text-right">
+        <h3 className="absolute top-[10px] right-[10px] bg-periwinkle px-4 py-2 rounded-lg text-gray font-bold text-right md:text-center lg:text-right">
           €{getRateDisplay()}
         </h3>
 
-        <div className="flex justify-center gap-4 text-gray-500 mb-4">
+        <div className="flex justify-center gap-4 text-gray mb-4">
           <p>
             <FaBed className="inline mr-2" /> {property.beds}
             <span className="md:hidden lg:inline"> Beds</span>
@@ -79,18 +80,15 @@ const PropertyCard = ({ property }) => {
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
           <div className="flex align-middle gap-2 mb-4 lg:mb-0">
-            <FaMapMarker className="text-green-700 mt-1" />
-            <span className="text-green-700">
+            <FaMapMarker className="text-persianGreen mt-1" />
+            <span className="text-persianGreen">
               {" "}
               {property.location.city} {property.location.state}{" "}
             </span>
           </div>
-          <Link
-            href={`/properties/${property._id}`}
-            className="h-[36px] bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-2 rounded-lg text-center text-sm"
-          >
+          <LinkButton href={`/properties/${property._id}`} type="details">
             Details
-          </Link>
+          </LinkButton>
         </div>
       </div>
     </div>
