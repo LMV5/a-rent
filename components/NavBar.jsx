@@ -36,7 +36,7 @@ function NavBar() {
             <button
               type="button"
               id="mobile-dropdown-button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
               aria-expanded="false"
               onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
@@ -66,13 +66,13 @@ function NavBar() {
             {/* <!-- Desktop Menu Hidden below md screens --> */}
             <div className="hidden md:ml-6 md:block">
               <div className="flex space-x-2">
-                <LinkButton href="/" type="primary">
+                <LinkButton href="/" style="primary">
                   Home
                 </LinkButton>
-                <LinkButton href="/properties" type="primary">
+                <LinkButton href="/properties" style="primary">
                   Properties
                 </LinkButton>
-                <LinkButton href="/properties/add" type="primary">
+                <LinkButton href="/properties/add" style="primary">
                   Add property
                 </LinkButton>
               </div>
@@ -104,7 +104,7 @@ function NavBar() {
               <Link href="/messages" className="relative group">
                 <button
                   type="button"
-                  className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative rounded-full p-1 text-gray hover:text-slateBlue focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
                 >
                   <span className="absolute -inset-1.5"></span>
                   <span className="sr-only">View notifications</span>
@@ -118,7 +118,7 @@ function NavBar() {
 
               <div className="relative ml-3">
                 <div>
-                  <LinkButton
+                  <button
                     type="button"
                     id="user-menu-button"
                     aria-expanded="false"
@@ -134,7 +134,7 @@ function NavBar() {
                       width={40}
                       height={40}
                     />
-                  </LinkButton>
+                  </button>
                 </div>
                 {isProfileMenuOpen && (
                   <div
@@ -147,7 +147,7 @@ function NavBar() {
                   >
                     <Link
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple"
+                      className="block px-4 py-2 text-sm hover:text-gray  hover:bg-cosmicLatte hover:bg-opacity-75"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-0"
@@ -159,7 +159,7 @@ function NavBar() {
                     </Link>
                     <Link
                       href="/properties/saved"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple"
+                      className="block px-4 py-2 text-sm hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-75"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"
@@ -175,7 +175,7 @@ function NavBar() {
                         signOut();
                       }}
                       href="#"
-                      className="px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple"
+                      className="block px-4 py-2 text-sm hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-75"
                       role="menuitem"
                       tabIndex="-1"
                       id="user-menu-item-2"

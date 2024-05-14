@@ -23,9 +23,8 @@ const PropertyCard = ({ property }) => {
   };
 
   return (
-    <div className="rounded-xl shadow-md relative">
+    <div className="rounded-xl shadow-lg relative">
       <Image
-        // src={`/images/${property.images[0]}`}
         src={property.images[0]}
         alt="image of property"
         height={0}
@@ -35,10 +34,10 @@ const PropertyCard = ({ property }) => {
       />
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
-          <div className="text-gray-600">{property.type}</div>
+          <div className="text-gray">{property.type}</div>
           <h3 className="text-xl font-bold text-gray">{property.name}</h3>
         </div>
-        <h3 className="absolute top-[10px] right-[10px] bg-periwinkle px-4 py-2 rounded-lg text-gray font-bold text-right md:text-center lg:text-right">
+        <h3 className="absolute top-[10px] right-[10px] bg-teaGreen px-4 py-2 rounded-lg text-gray font-bold text-right md:text-center lg:text-right">
           €{getRateDisplay()}
         </h3>
 
@@ -58,10 +57,10 @@ const PropertyCard = ({ property }) => {
           </p>
         </div>
 
-        <div className="flex justify-center gap-4 text-green-900 text-sm mb-4">
+        <div className="flex justify-center gap-3 text-slateBlue text-[13px] mb-4">
           {property.rates.nightly && (
             <p>
-              <FaMoneyBill className="inline mr-2" /> Nightly
+              <FaMoneyBill className="inline mr-1" /> Nightly
             </p>
           )}
           {property.rates.weekly && (
@@ -76,17 +75,17 @@ const PropertyCard = ({ property }) => {
           )}
         </div>
 
-        <div className="border border-gray-100 mb-5"></div>
+        <div className="border border-gray mb-5"></div>
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">
-          <div className="flex align-middle gap-2 mb-4 lg:mb-0">
+          <div className="flex align-middle gap-2 mb-4 lg:mb-0 m-auto">
             <FaMapMarker className="text-persianGreen mt-1" />
             <span className="text-persianGreen">
               {" "}
               {property.location.city} {property.location.state}{" "}
             </span>
           </div>
-          <LinkButton href={`/properties/${property._id}`} type="details">
+          <LinkButton href={`/properties/${property._id}`} style="details">
             Details
           </LinkButton>
         </div>

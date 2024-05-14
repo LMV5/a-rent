@@ -54,9 +54,9 @@ function Message({ message }) {
   }
 
   return (
-    <div className="relative bg-white p-4 rounded-md shadow-md border border-gray-200 flex justify-between flex-col sm:flex-row">
+    <div className="relative bg-teaGreen p-4 rounded-md shadow-md border border-gray flex justify-between flex-col sm:flex-row">
       {!isRead && (
-        <div className="absolute top-2 right-2 bg-teaGreen text-gray px-2 py-1 mx-2 rounded-md">
+        <div className="absolute top-2 right-2 bg-slateBlue text-teaGreen px-2 py-1 mx-2 rounded-md">
           New
         </div>
       )}
@@ -65,7 +65,7 @@ function Message({ message }) {
           <span className="font-bold">Property Inquiry: </span>
           {message.property.name}
         </h2>
-        <p className="text-gray-700">{message.body}</p>
+        <p className="text-gray">{message.body}</p>
 
         <ul className="mt-4">
           <li>
@@ -74,13 +74,13 @@ function Message({ message }) {
 
           <li>
             <strong>Reply Email: </strong>
-            <a href={`mailto:${message.email}`} className="text-blue-500">
+            <a href={`mailto:${message.email}`} className="text-slateBlue">
               {message.email}
             </a>
           </li>
           <li>
             <strong>Reply Phone: </strong>
-            <a href={`tel:${message.phone}`} className="text-blue-500">
+            <a href={`tel:${message.phone}`} className="text-slateBlue">
               {message.phone}
             </a>
           </li>
@@ -91,15 +91,22 @@ function Message({ message }) {
         </ul>
       </div>
       <div className="py-5 flex flex-col">
-        <LinkButton
+        <button
           onClick={handleReadClick}
-          type={`${isRead ? "read" : "new"}`}
+          className={`${
+            isRead
+              ? "mt-4 py-1 px-3 rounded-md text-gray bg-cosmicLatte flex items-center mb-3"
+              : "mt-4 py-1 px-3 rounded-md text-teaGreen bg-persianGreen flex items-center mb-3"
+          }`}
         >
           {isRead ? "Mark As New" : "Mark As Read"}
-        </LinkButton>
-        <LinkButton onClick={handleDeleteClick} type="delete">
+        </button>
+        <button
+          onClick={handleDeleteClick}
+          className="mt-4 bg-red text-teaGreen py-1 px-3 rounded-md"
+        >
           Delete
-        </LinkButton>
+        </button>
       </div>
     </div>
   );

@@ -136,17 +136,23 @@ function SideBar({ property }) {
   return (
     <aside className="space-y-4">
       {isBookmarked ? (
-        <LinkButton onClick={handleClick} type="removeBookmark">
+        <button
+          onClick={handleClick}
+          className="bg-red text-teaGreen font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+        >
           <FaBookmark className="mr-2" /> Remove Bookmark
-        </LinkButton>
+        </button>
       ) : (
-        <LinkButton onClick={handleClick} type="addBookmark">
+        <button
+          onClick={handleClick}
+          className="bg-persianGreen text-teaGreen font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+        >
           <FaBookmark className="mr-2" /> Bookmark Property
-        </LinkButton>
+        </button>
       )}
 
       <div>
-        <h3 className="text-xl font-bold text-center pt-2">
+        <h3 className="text-xl font-bold text-center pb-2">
           Share this property:
         </h3>
         <div className="flex gap-3 justify-center pb-5">
@@ -155,7 +161,7 @@ function SideBar({ property }) {
             quote={property.name}
             hashtag={`#${property.type}ForRent`}
           >
-            <FacebookIcon size={40} round={true} />
+            <FacebookIcon size={40} round={true} className="hover:opacity-80" />
           </FacebookShareButton>
 
           <TwitterShareButton
@@ -163,11 +169,11 @@ function SideBar({ property }) {
             title={property.name}
             hashtags={[`${property.type}ForRent`]}
           >
-            <TwitterIcon size={40} round={true} />
+            <TwitterIcon size={40} round={true} className="hover:opacity-80" />
           </TwitterShareButton>
 
           <TelegramShareButton url={shareUrl} quote={property.name}>
-            <TelegramIcon size={40} round={true} />
+            <TelegramIcon size={40} round={true} className="hover:opacity-80" />
           </TelegramShareButton>
 
           <EmailShareButton
@@ -175,7 +181,7 @@ function SideBar({ property }) {
             subject={property.name}
             body={"Check out this property listing:"}
           >
-            <EmailIcon size={40} round={true} />
+            <EmailIcon size={40} round={true} className="hover:opacity-80" />
           </EmailShareButton>
         </div>
       </div>
@@ -257,7 +263,7 @@ function SideBar({ property }) {
             </div>
             <div>
               <button
-                className="bg-darkPurple hover:bg-purple text-teaGreen font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+                className="bg-teaGreen hover:bg-opacity-70 text-gray font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
                 type="submit"
               >
                 <FaPaperPlane className="mr-2" /> Send Message

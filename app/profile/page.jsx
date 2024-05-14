@@ -123,7 +123,7 @@ function ProfilePage() {
                     <div className="flex justify-between mt-2 ml-4">
                       <div>
                         <p className="text-lg font-semibold">{property.name}</p>
-                        <p className="text-gray-600">
+                        <p className="text-persianGreen">
                           Address: {property.location.street}
                           {", "}
                           {property.location.city}
@@ -140,7 +140,7 @@ function ProfilePage() {
                         </Link>
                         <button
                           onClick={() => handleDeleteProperty(property._id)}
-                          className="px-3 py-2 rounded-md mt-2"
+                          className="px-3 py-2 rounded-md mt-2 text-red"
                           type="button"
                         >
                           <FaRegTrashAlt />

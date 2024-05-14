@@ -29,7 +29,7 @@ const HomeProperties = async () => {
       </section>
 
       <section className="m-auto max-w-lg my-10 px-6">
-        <LinkButton href="/properties" type="viewBtn">
+        <LinkButton href="/properties" style="viewBtn">
           View All Properties
         </LinkButton>
       </section>

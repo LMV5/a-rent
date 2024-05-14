@@ -1,5 +1,4 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import LinkButton from "./LinkButton";
 
 function Pagination({ page, pageSize, totalItems, onPageChange }) {
   const totalPages = Math.ceil(totalItems / pageSize);
@@ -12,22 +11,24 @@ function Pagination({ page, pageSize, totalItems, onPageChange }) {
 
   return (
     <section className="container mx-auto flex justify-center items-center my-8">
-      <LinkButton
+      <button
         disabled={page === 1}
+        className={page === 1 ? "opacity-30" : ""}
         onClick={() => handlePageChange(page - 1)}
       >
         <FaArrowLeft />
-      </LinkButton>
+      </button>
       <span className="mx-2">
         {" "}
         Page {page} of {totalPages}{" "}
       </span>
-      <LinkButton
+      <button
         disabled={page === totalPages}
+        className={page === totalPages ? "opacity-30" : ""}
         onClick={() => handlePageChange(page + 1)}
       >
         <FaArrowRight />
-      </LinkButton>
+      </button>
     </section>
   );
 }

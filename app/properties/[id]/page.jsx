@@ -11,6 +11,7 @@ import PropertyDetails from "@/components/PropertyDetails";
 import SideBar from "@/components/SideBar";
 import Spinner from "@/components/Spinner";
 import PropertyImages from "@/components/PropertyImages";
+import PropertyMap from "@/components/PropertyMap";
 
 const PropertyPage = () => {
   const { id } = useParams();
@@ -50,18 +51,21 @@ const PropertyPage = () => {
         <>
           <PropertyHeaderImage image={property.images[0]} />
           <section>
-            <div className="container m-auto py-6 px-6">
-              <LinkButton href="/properties" type="btnBack">
+            <div className="container m-auto py-6">
+              <LinkButton href="/properties" style="btnBack">
                 <FaArrowLeft className="mr-2" />
                 Back to Properties
               </LinkButton>
             </div>
           </section>
           <section>
-            <div className="container m-auto py-10 px-6">
-              <div className="grid grid-cols-1 md:grid-cols-70-50 w-full gap-6">
+            <div className="container m-auto py-10">
+              <div className="grid grid-cols-1 md:grid-cols-70-50 w-full gap-2">
                 <PropertyDetails property={property} />
                 <SideBar property={property} />
+              </div>
+              <div className="h-28 mt-6 rounded-lg">
+                <PropertyMap />
               </div>
             </div>
           </section>

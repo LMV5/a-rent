@@ -38,7 +38,7 @@ function SearchResultsPage() {
 
   return (
     <>
-      <section className="py-4 bg-blue-300">
+      <section className="py-4 bg-slateBlue">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-start sm:px-6 lg:px-8">
           <PropertySearchForm />
         </div>
@@ -48,11 +48,11 @@ function SearchResultsPage() {
       ) : (
         <section className="px-4 py-6">
           <div className="container-xl lg:container m-auto px-4 py-6">
-            <LinkButton href="/properties" type="btnBack">
+            <LinkButton href="/properties" style="btnBack">
               <FaArrowAltCircleLeft className="mr-2 mb-0.5" />
               Back to Properties
             </LinkButton>
-            <h1 className="text-2xl mb-4">Search Results:</h1>
+            <h1 className="text-2xl mb-4 text-gray">Search Results:</h1>
             {properties.length === 0 ? (
               <p>No search results found</p>
             ) : (
