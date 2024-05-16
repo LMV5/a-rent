@@ -134,7 +134,7 @@ function SideBar({ property }) {
   };
 
   return (
-    <aside className="space-y-4">
+    <aside className="">
       {isBookmarked ? (
         <button
           onClick={handleClick}
@@ -151,11 +151,11 @@ function SideBar({ property }) {
         </button>
       )}
 
-      <div>
-        <h3 className="text-xl font-bold text-center pb-2">
+      <div className="py-2">
+        <h3 className="text-xl font-bold text-center py-4">
           Share this property:
         </h3>
-        <div className="flex gap-3 justify-center pb-5">
+        <div className="flex gap-3 justify-center pb-6">
           <FacebookShareButton
             url={shareUrl}
             quote={property.name}
@@ -263,7 +263,7 @@ function SideBar({ property }) {
             </div>
             <div>
               <button
-                className="bg-teaGreen hover:bg-opacity-70 text-gray font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
+                className="bg-teaGreen hover:bg-opacity-70 text-gray font-bold py-3 px-4 rounded-full w-full focus:outline-none focus:shadow-outline flex items-center justify-center"
                 type="submit"
               >
                 <FaPaperPlane className="mr-2" /> Send Message

@@ -5,7 +5,6 @@ import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 
 export default function PropertyMap() {
-  // const { position, zoom } = props;
   const [mapPosition, setMapPosition] = useState([40, 0]);
 
   return (

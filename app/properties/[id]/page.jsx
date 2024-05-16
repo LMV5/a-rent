@@ -58,17 +58,13 @@ const PropertyPage = () => {
               </LinkButton>
             </div>
           </section>
-          <section>
-            <div className="container m-auto py-10">
-              <div className="grid grid-cols-1 md:grid-cols-70-50 w-full gap-2">
-                <PropertyDetails property={property} />
-                <SideBar property={property} />
-              </div>
-              <div className="h-28 mt-6 rounded-lg">
-                <PropertyMap />
-              </div>
-            </div>
+          <section className="max-w-4xl m-auto py-10 grid grid-cols-70-30">
+            <PropertyDetails property={property} />
+            <SideBar property={property} />
           </section>
+          <div className="h-96 max-w-4xl m-auto">
+            <PropertyMap />
+          </div>
           <PropertyImages images={property.images} />
         </>
       )}
