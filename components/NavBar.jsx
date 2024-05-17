@@ -42,7 +42,6 @@ function NavBar() {
               onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
             >
               <span className="absolute -inset-0.5"></span>
-              {/* <span className="sr-only">Open main menu</span> */}
               <svg
                 className="block h-6 w-6"
                 fill="none"
@@ -85,14 +84,14 @@ function NavBar() {
               <div className="flex items-center">
                 {providers &&
                   Object.values(providers).map((provider, index) => (
-                    <LinkButton
+                    <button
                       onClick={() => signIn(provider.id)}
                       key={index}
-                      type="mobileMenu"
+                      className="flex items-center text-gray hover:bg-slateBlue hover:bg-opacity-45 rounded-md px-3 py-2"
                     >
                       <FaGoogle className="text-white mr-2" />
                       <span>Login or Register</span>
-                    </LinkButton>
+                    </button>
                   ))}
               </div>
             </div>
@@ -136,6 +135,7 @@ function NavBar() {
                     />
                   </button>
                 </div>
+
                 {isProfileMenuOpen && (
                   <div
                     id="user-menu"

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useGlobalContext } from "@/context/GlobalContext";
-import LinkButton from "./LinkButton";
 
 function Message({ message }) {
   const [isRead, setIsRead] = useState(message.read);

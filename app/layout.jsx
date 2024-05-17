@@ -6,7 +6,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GlobalProvider } from "@/context/GlobalContext";
 import "photoswipe/dist/photoswipe.css";
-import "leaflet/dist/leaflet.css";
+import { Josefin_Sans } from "next/font/google";
+
+const font = Josefin_Sans({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "A-Rent | Find The Perfect Rental",
@@ -19,7 +24,7 @@ export default function RootLayout({ children }) {
     <GlobalProvider>
       <AuthProvider>
         <html lang="en">
-          <body className="flex flex-col min-height: 100vh;">
+          <body className={`${font.className} flex flex-col min-height: 100vh`}>
             <NavBar />
             <main className="flex-grow: 1">{children}</main>
             <Footer />

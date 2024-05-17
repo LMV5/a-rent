@@ -1,12 +1,6 @@
 import Image from "next/image";
 import LinkButton from "./LinkButton";
-import {
-  FaBed,
-  FaBath,
-  FaRulerCombined,
-  FaMoneyBill,
-  FaMapMarker,
-} from "react-icons/fa";
+import { FaBed, FaBath, FaRulerCombined, FaMoneyBill } from "react-icons/fa";
 
 const PropertyCard = ({ property }) => {
   const getRateDisplay = () => {
@@ -28,6 +22,7 @@ const PropertyCard = ({ property }) => {
         alt="image of property"
         height={0}
         width={0}
+        priority={true}
         sizes="100vw"
         className="w-full h-auto rounded-t-xl"
       />
@@ -74,16 +69,7 @@ const PropertyCard = ({ property }) => {
           )}
         </div>
 
-        <div className="border border-gray mb-5"></div>
-
         <div className="flex flex-col lg:flex-row justify-between mb-4">
-          <div className="flex align-middle gap-2 mb-4 lg:mb-0 m-auto">
-            <FaMapMarker className="text-persianGreen mt-1" />
-            <span className="text-persianGreen">
-              {" "}
-              {property.location.city} {property.location.state}{" "}
-            </span>
-          </div>
           <LinkButton href={`/properties/${property._id}`} style="details">
             Details
           </LinkButton>

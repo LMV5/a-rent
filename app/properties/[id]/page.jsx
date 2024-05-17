@@ -10,8 +10,6 @@ import PropertyDetails from "@/components/PropertyDetails";
 import SideBar from "@/components/SideBar";
 import Spinner from "@/components/Spinner";
 import PropertyImages from "@/components/PropertyImages";
-import PropertyMap from "@/components/PropertyMap";
-import "leaflet/dist/leaflet.css";
 
 export default function Page() {
   const { id } = useParams();
@@ -62,9 +60,6 @@ export default function Page() {
             <PropertyDetails property={property} />
             <SideBar property={property} />
           </section>
-          <div className="h-96 max-w-4xl m-auto">
-            <PropertyMap property={property} />
-          </div>
           <PropertyImages images={property.images} />
         </>
       )}
