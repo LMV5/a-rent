@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { fetchProperty } from "@/utils/requests";
-import React from "react";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import LinkButton from "@/components/LinkButton";
 import { FaArrowLeft } from "react-icons/fa";
@@ -12,8 +11,9 @@ import SideBar from "@/components/SideBar";
 import Spinner from "@/components/Spinner";
 import PropertyImages from "@/components/PropertyImages";
 import PropertyMap from "@/components/PropertyMap";
+import "leaflet/dist/leaflet.css";
 
-const PropertyPage = () => {
+export default function Page() {
   const { id } = useParams();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -63,13 +63,11 @@ const PropertyPage = () => {
             <SideBar property={property} />
           </section>
           <div className="h-96 max-w-4xl m-auto">
-            <PropertyMap />
+            <PropertyMap property={property} />
           </div>
           <PropertyImages images={property.images} />
         </>
       )}
     </>
   );
-};
-
-export default PropertyPage;
+}

@@ -5,7 +5,7 @@ import PropertyCard from "@/components/PropertyCard";
 import Spinner from "@/components/Spinner";
 import { toast } from "react-toastify";
 
-function SavedPropertiesPage() {
+export default function Page() {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -49,5 +49,3 @@ function SavedPropertiesPage() {
     </section>
   );
 }
-
-export default SavedPropertiesPage;

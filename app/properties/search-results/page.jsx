@@ -8,7 +8,7 @@ import Spinner from "@/components/Spinner";
 import PropertyCard from "@/components/PropertyCard";
 import PropertySearchForm from "@/components/PropertySearchForm";
 
-function SearchResultsPage() {
+export default function Page() {
   const searchParams = useSearchParams();
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -69,5 +69,3 @@ function SearchResultsPage() {
     </>
   );
 }
-
-export default SearchResultsPage;

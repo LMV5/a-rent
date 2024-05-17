@@ -9,7 +9,7 @@ import Spinner from "@/components/Spinner";
 import { toast } from "react-toastify";
 import { FaRegTrashAlt, FaRegEdit } from "react-icons/fa";
 
-function ProfilePage() {
+export default function Page() {
   const { data: session } = useSession();
   const profileImage = session?.user?.image;
   const profileName = session?.user?.name;
@@ -157,5 +157,3 @@ function ProfilePage() {
     </section>
   );
 }
-
-export default ProfilePage;

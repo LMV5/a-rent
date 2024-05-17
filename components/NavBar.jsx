@@ -36,7 +36,7 @@ function NavBar() {
             <button
               type="button"
               id="mobile-dropdown-button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray focus:outline-none focus:ring-2 focus:ring-inset"
               aria-controls="mobile-menu"
               aria-expanded="false"
               onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
@@ -158,6 +158,18 @@ function NavBar() {
                       Your Profile
                     </Link>
                     <Link
+                      href="/profile/reservations"
+                      className="block px-4 py-2 text-sm hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-75"
+                      role="menuitem"
+                      tabIndex="-1"
+                      id="user-menu-item-2"
+                      onClick={() => {
+                        setIsProfileMenuOpen(false);
+                      }}
+                    >
+                      Reservations
+                    </Link>
+                    <Link
                       href="/properties/saved"
                       className="block px-4 py-2 text-sm hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-75"
                       role="menuitem"
@@ -191,7 +203,12 @@ function NavBar() {
       </div>
 
       {isMobileMenuOpen && (
-        <MobileMenu session={session} providers={providers} signIn={signIn} />
+        <MobileMenu
+          session={session}
+          providers={providers}
+          signIn={signIn}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
       )}
     </nav>
   );

@@ -14,8 +14,6 @@ function LinkButton({ children, href, style }) {
     logo: "flex flex-shrink-0 flex-row items-center",
     viewBtn:
       "block bg-teaGreen text-gray text-center py-4 px-6 rounded-xl hover:bg-opacity-75",
-    mobileMenu:
-      "flex items-center text-gray hover:bg-darkPurple hover:text-teaGreen rounded-md px-3 py-2",
     dropdownMenu:
       "block px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple",
     btnBack:
@@ -32,19 +30,6 @@ function LinkButton({ children, href, style }) {
       </Link>
     );
   }
-
-  // if (onClick) {
-  //   return (
-  //     <button
-  //       onClick={onClick}
-  //       type={type}
-  //       className={`${styles[style]}`}
-  //       disabled={disabled}
-  //     >
-  //       {children}
-  //     </button>
-  //   );
-  // }
 }
 
 export default LinkButton;

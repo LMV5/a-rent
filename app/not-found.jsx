@@ -1,7 +1,7 @@
 import { FaExclamationCircle } from "react-icons/fa";
 import Link from "next/link";
 
-function NotFoundPage() {
+export default function Page() {
   return (
     <section className="bg-blue-50 min-h-screen flex-grow">
       <div className="container m-auto max-w-2xl py-24">
@@ -27,5 +27,3 @@ function NotFoundPage() {
     </section>
   );
 }
-
-export default NotFoundPage;

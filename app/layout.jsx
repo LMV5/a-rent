@@ -1,4 +1,3 @@
-import React from "react";
 import "@/assets/styles/globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -15,7 +14,7 @@ export const metadata = {
   keywords: "rental, find rental, find properties, apartment, hotel, room",
 };
 
-const MainLayout = ({ children }) => {
+export default function RootLayout({ children }) {
   return (
     <GlobalProvider>
       <AuthProvider>
@@ -30,6 +29,4 @@ const MainLayout = ({ children }) => {
       </AuthProvider>
     </GlobalProvider>
   );
-};
-
-export default MainLayout;
+}

@@ -7,7 +7,7 @@ const override = {
   margin: "100px auto",
 };
 
-function LoadingPage({ loading }) {
+export default function Page({ loading }) {
   return (
     <FadeLoader
       color="#3b82f6"
@@ -18,5 +18,3 @@ function LoadingPage({ loading }) {
     />
   );
 }
-
-export default LoadingPage;

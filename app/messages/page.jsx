@@ -1,7 +1,5 @@
 import Messages from "@/components/Messages";
 
-function MessagesPage() {
+export default function Page() {
   return <Messages />;
 }
-
-export default MessagesPage;

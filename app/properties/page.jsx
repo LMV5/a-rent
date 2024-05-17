@@ -1,8 +1,6 @@
 import React from "react";
 import Properties from "@/components/Properties";
 
-const PropertiesPage = async () => {
+export default async function Page() {
   return <Properties />;
-};
-
-export default PropertiesPage;
+}

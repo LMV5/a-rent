@@ -1,4 +1,4 @@
-function TermsPage() {
+export default function Page() {
   return (
     <div className="flex">
       <h2 className="">Terms of Service</h2>
@@ -87,5 +87,3 @@ function TermsPage() {
     </div>
   );
 }
-
-export default TermsPage;

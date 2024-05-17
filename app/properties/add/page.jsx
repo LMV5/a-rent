@@ -1,6 +1,6 @@
 import PropertyAddForm from "@/components/PropertyAddForm";
 
-function PropertyAddPage() {
+export default function Page() {
   return (
     <section className="bg-blue-50">
       <div className="container m-auto max-w-2xl py-24">
@@ -11,5 +11,3 @@ function PropertyAddPage() {
     </section>
   );
 }
-
-export default PropertyAddPage;

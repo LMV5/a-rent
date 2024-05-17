@@ -19,6 +19,8 @@ function PropertyEditForm() {
       city: "",
       country: "",
       zipcode: "",
+      lat: "",
+      lng: "",
     },
     beds: "",
     baths: "",
@@ -219,6 +221,24 @@ function PropertyEditForm() {
             className="border rounded w-full py-2 px-3 mb-2"
             placeholder="Zipcode"
             value={fields.location.zipcode}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            id="lat"
+            name="location.lat"
+            className="border rounded w-full py-2 px-3 mb-2"
+            placeholder="Lat"
+            value={fields.location.lat}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            id="lng"
+            name="location.lng"
+            className="border rounded w-full py-2 px-3 mb-2"
+            placeholder="Lng"
+            value={fields.location.lng}
             onChange={handleChange}
           />
         </div>
