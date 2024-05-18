@@ -14,6 +14,8 @@ function LinkButton({ children, href, style }) {
     logo: "flex flex-shrink-0 flex-row items-center",
     viewBtn:
       "block bg-teaGreen text-gray text-center py-4 px-6 rounded-xl hover:bg-opacity-75",
+    menuItem:
+      "block px-4 py-2 text-sm hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-75",
     dropdownMenu:
       "block px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple",
     btnBack:

@@ -7,7 +7,7 @@ export const formatDistanceFromNow = (dateStr) =>
     ""
   );
 
-function ReservationCard({ booking }) {
+export default function ReservationCard({ booking }) {
   const { id, guestId, startDate, endDate, numNights } = booking;
 
   return <div>Reservation Card</div>;
