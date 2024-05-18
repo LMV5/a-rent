@@ -11,9 +11,6 @@ import { toast } from "react-toastify";
 
 export default function Page() {
   const { data: session } = useSession();
-  // const profileImage = session?.user?.image;
-  // const profileName = session?.user?.name;
-  // const profileEmail = session?.user?.email;
 
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -72,9 +69,9 @@ export default function Page() {
 
   return (
     <>
-      <div className="m-auto text-xl font-semibold mb-4 mt-4">
+      <div className="m-auto text-gray text-xl font-semibold mb-4 mt-4">
         {/* <div className="md:w-3/4 md:pl-4"> */}
-        <h2 className="m-auto text-xl font-semibold mb-4">Your Listings</h2>
+        <h2 className="m-auto  mb-4">Your Listings</h2>
         {!loading && properties.length === 0 && <p>You have no listings</p>}
         {loading ? (
           <Spinner loading={loading} />

@@ -5,10 +5,8 @@ export default function Page() {
   const bookings = [];
 
   return (
-    <div>
-      <h2 className="font-semibold text-2xl text-gray mv-7">
-        Your reservations
-      </h2>
+    <div className="m-auto text-xl text-gray font-semibold mb-4 mt-4">
+      <h2 className="mb-7">Your reservations</h2>
 
       {bookings.length === 0 ? (
         <p className="text-lg">
@@ -18,7 +16,7 @@ export default function Page() {
           </Link>
         </p>
       ) : (
-        <ul className="space-y-6">
+        <ul class Name="space-y-6">
           {bookings.map((booking) => (
             <ReservationCard booking={booking} key={booking.id} />
           ))}
