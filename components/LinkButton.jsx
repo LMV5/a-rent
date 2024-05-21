@@ -24,7 +24,6 @@ function LinkButton({ children, href, style, pathname }) {
     edit: "bg-periwinkle text-gray px-3 py-2 rounded-md mt-2",
     details:
       "h-[36px] bg-slateBlue hover:bg-opacity-70 text-gray px-4 py-2 rounded-lg text-center text-sm",
-    book: "absolute top-10 right-10 text-2xl bg-teaGreen  hover:bg-opacity-70 text-gray px-4 py-2 rounded-full text-center",
   };
 
   if (href) {

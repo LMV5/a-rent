@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { fetchProperty, fetchProperties } from "@/utils/requests";
+import { fetchProperty } from "@/utils/requests";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import LinkButton from "@/components/LinkButton";
 import { FaArrowLeft } from "react-icons/fa";
@@ -56,6 +56,7 @@ export default function Page() {
               </LinkButton>
             </div>
           </section>
+
           <section className="max-w-4xl m-auto py-10 grid grid-cols-70-30">
             <PropertyDetails property={property} />
             <SideBar property={property} />
