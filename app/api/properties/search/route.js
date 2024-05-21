@@ -17,8 +17,6 @@ export const GET = async (request) => {
         { "location.city": locationPattern },
         { "location.country": locationPattern },
         { "location.zipcode": locationPattern },
-        { "location.lat": locationPattern },
-        { "location.lng": locationPattern },
       ],
     };
 

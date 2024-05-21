@@ -11,7 +11,6 @@
   "dependencies": {
     "cloudinary": "^2.1.0",
     "date-fns": "^3.6.0",
-    "leaflet": "^1.9.4",
     "mapbox-gl": "^3.3.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",

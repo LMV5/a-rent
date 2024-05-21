@@ -2,7 +2,6 @@ import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import cloudinary from "@/config/cloudinary";
-const apiGeo = process.env.HERE_GEOCODING_API_KEY || null;
 
 export const GET = async (request) => {
   try {
@@ -53,8 +52,6 @@ export const POST = async (request) => {
         city: formData.get("location.city"),
         country: formData.get("location.country"),
         zipcode: formData.get("location.zipcode"),
-        lat: formData.get("location.lat"),
-        lng: formData.get("location.lng"),
       },
       beds: formData.get("beds"),
       baths: formData.get("baths"),

@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
           <body className={`${font.className} flex flex-col min-height: 100vh`}>
             <NavBar />
-            <main className="flex-grow: 1">{children}</main>
+            <main className="flex-1 w-full">{children}</main>
             <ToastContainer />
           </body>
         </html>

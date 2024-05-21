@@ -1,5 +1,6 @@
 "use client";
 
+import LinkButton from "./LinkButton";
 import {
   FaBed,
   FaBath,
@@ -13,9 +14,12 @@ function PropertyDetails({ property }) {
   return (
     <>
       <div className="flex flex-col">
-        <div className="px-6 py-6 rounded-lg shadow-lg text-center md:text-left">
+        <div className="px-6 py-6 rounded-lg shadow-lg text-center md:text-left relative">
           <div className="text-gray mb-4">{property.type}</div>
           <h1 className="text-3xl font-bold mb-4">{property.name}</h1>
+          <LinkButton href={`/properties/${property._id}/booking`} style="book">
+            Book now
+          </LinkButton>
           <div className="text-gray mb-4 flex align-middle justify-center md:justify-start">
             <FaMapMarker className="text-lg mr-2 text-persianGreen" />
             <p className="text-persianGreen">

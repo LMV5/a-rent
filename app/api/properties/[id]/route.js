@@ -1,7 +1,6 @@
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
-import "leaflet/dist/leaflet.css";
 
 // GET /api/properties/:id
 
@@ -83,8 +82,6 @@ export const PUT = async (request, { params }) => {
         city: formData.get("location.city"),
         country: formData.get("location.country"),
         zipcode: formData.get("location.zipcode"),
-        lat: formData.get("location.lat"),
-        lng: formData.get("location.lng"),
       },
       beds: formData.get("beds"),
       baths: formData.get("baths"),

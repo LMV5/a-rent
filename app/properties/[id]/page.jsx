@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { fetchProperty } from "@/utils/requests";
+import { fetchProperty, fetchProperties } from "@/utils/requests";
 import PropertyHeaderImage from "@/components/PropertyHeaderImage";
 import LinkButton from "@/components/LinkButton";
 import { FaArrowLeft } from "react-icons/fa";
