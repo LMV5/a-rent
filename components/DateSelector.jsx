@@ -1,7 +1,7 @@
 "use client";
 
 import { isWithinInterval } from "date-fns";
-import { useState } from "react";
+
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
@@ -16,8 +16,6 @@ function isAlreadyBooked(range, dateArr) {
 }
 
 function DateSelector() {
-  const [range, setRange] = useState({ from: undefined, to: undefined });
-
   const minBookingLength = 1;
   const maxBookingLength = 23;
 
