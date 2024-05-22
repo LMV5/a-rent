@@ -20,8 +20,7 @@ function LinkButton({ children, href, style, pathname }) {
     dropdownMenu:
       "block px-4 py-2 text-sm text-gray-700 hover:text-teaGreen hover:bg-darkPurple",
     btnBack:
-      base +
-      "block text-gray hover:text-slateBlue flex items-center mb-3 py-3 px-4",
+      base + "text-gray hover:text-slateBlue flex items-center mb-3 py-3 px-4",
     edit: "bg-periwinkle text-gray px-3 py-2 rounded-md mt-2",
     details:
       "h-[36px] bg-slateBlue hover:bg-opacity-70 text-gray px-4 py-2 rounded-lg text-center text-sm",

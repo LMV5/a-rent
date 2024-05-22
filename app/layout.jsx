@@ -27,7 +27,7 @@ export default function RootLayout({ children }) {
           <body className={`${font.className} flex flex-col min-height: 100vh`}>
             <NavBar />
             <ReservationProvider>
-              <main className="flex-1 w-full">{children}</main>
+              <main className="flex-1">{children}</main>
             </ReservationProvider>
             <ToastContainer />
           </body>

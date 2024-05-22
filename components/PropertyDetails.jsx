@@ -28,7 +28,7 @@ function PropertyDetails({ property }) {
 
           <div className="flex justify-center gap-20">
             <DateSelector />
-            <ReservationForm />
+            <ReservationForm property={property} />
           </div>
         </div>
       )}

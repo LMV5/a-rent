@@ -3,10 +3,10 @@ const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 async function fetchProperties() {
   try {
     if (!apiDomain) {
-      return [];
+      throw new Error("API domain is not defined");
     }
 
-    const res = await fetch(`${apiDomain}/properties`, { cache: "no-store" });
+    const res = await fetch(`${apiDomain}/properties`, { cache: "no-cache" });
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
@@ -22,7 +22,7 @@ async function fetchProperties() {
 async function fetchProperty(id) {
   try {
     if (!apiDomain) {
-      return null;
+      throw new Error("API domain is not defined");
     }
 
     const res = await fetch(`${apiDomain}/properties/${id}`);
