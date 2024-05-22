@@ -47,21 +47,18 @@ export default function Page() {
       {loading && <Spinner loading={loading} />}
       {!loading && property && (
         <>
-          <PropertyHeaderImage image={property.images[0]} />
-          <section>
-            <div className="container m-auto py-6">
-              <LinkButton href="/properties" style="btnBack">
-                <FaArrowLeft className="mr-2" />
-                Back to Properties
-              </LinkButton>
-            </div>
-          </section>
-
-          <section className="max-w-4xl m-auto py-10 grid grid-cols-70-30">
-            <PropertyDetails property={property} />
-            <SideBar property={property} />
-          </section>
           <PropertyImages images={property.images} />
+          {/* <PropertyHeaderImage image={property.images[0]} /> */}
+
+          <LinkButton href="/properties" style="btnBack">
+            <FaArrowLeft className="mr-2" />
+            Back to Properties
+          </LinkButton>
+
+          <section className="mx-10 grid grid-cols-6 gap-5">
+            <PropertyDetails property={property} />
+            {/* <SideBar property={property} /> */}
+          </section>
         </>
       )}
     </>

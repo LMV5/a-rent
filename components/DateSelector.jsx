@@ -1,28 +1,30 @@
 "use client";
 
-import { isWithinInterval } from "date-fns";
-
+// import { isWithinInterval } from "date-fns";
+import { useReservation } from "@/context/ReservationContext";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-function isAlreadyBooked(range, dateArr) {
-  return (
-    range.from &&
-    range.to &&
-    dateArr.some((date) =>
-      isWithinInterval(date, { start: range.from, end: range.to })
-    )
-  );
-}
+// function isAlreadyBooked(range, dateArr) {
+//   return (
+//     range.from &&
+//     range.to &&
+//     dateArr.some((date) =>
+//       isWithinInterval(date, { start: range.from, end: range.to })
+//     )
+//   );
+// }
 
 function DateSelector() {
+  const { range, setRange, resetRange } = useReservation();
+
   const minBookingLength = 1;
   const maxBookingLength = 23;
 
   return (
-    <div className="flex flex-col justify-between">
+    <div className="">
       <DayPicker
-        className="pt-12 place-self-center"
+        className=""
         mode="range"
         onSelect={setRange}
         selected={range}
@@ -34,7 +36,6 @@ function DateSelector() {
         captionLayout="dropdown"
         numberOfMonths={2}
       />
-      <div className="flex items-center justify-between px-8 bg-teaGreen"></div>
     </div>
   );
 }

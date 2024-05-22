@@ -4,6 +4,7 @@ import AuthProvider from "@/components/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { GlobalProvider } from "@/context/GlobalContext";
+import { ReservationProvider } from "@/context/ReservationContext";
 import "photoswipe/dist/photoswipe.css";
 import { Josefin_Sans } from "next/font/google";
 
@@ -25,7 +26,9 @@ export default function RootLayout({ children }) {
         <html lang="en">
           <body className={`${font.className} flex flex-col min-height: 100vh`}>
             <NavBar />
-            <main className="flex-1 w-full">{children}</main>
+            <ReservationProvider>
+              <main className="flex-1 w-full">{children}</main>
+            </ReservationProvider>
             <ToastContainer />
           </body>
         </html>

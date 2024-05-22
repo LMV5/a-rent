@@ -5,7 +5,7 @@ function PropertyImages({ images }) {
   return (
     <Gallery>
       <section className="p-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {images.length === 1 ? (
             <Item
               original={images[0]}
@@ -27,16 +27,9 @@ function PropertyImages({ images }) {
               )}
             </Item>
           ) : (
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-3 gap-4">
               {images.map((image, index) => (
-                <div
-                  key={index}
-                  className={`${
-                    images.length === 3 && index === 2
-                      ? "col-span-2"
-                      : "col-span-1"
-                  }`}
-                >
+                <div key={index} className={"flex"}>
                   <Item
                     original={image}
                     thumbnail={image}

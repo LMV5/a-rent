@@ -4,106 +4,85 @@ import {
   FaBed,
   FaBath,
   FaRulerCombined,
-  FaTimes,
   FaCheck,
-  FaMapMarker,
+  FaTimes,
 } from "react-icons/fa";
 
-import Link from "next/link";
+import { useState } from "react";
+import DateSelector from "@/components/DateSelector";
+import ReservationForm from "@/components/ReservationForm";
 
 function PropertyDetails({ property }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
-      <div className="flex flex-col relative">
-        <div className="px-6 py-6 rounded-lg shadow-lg text-center md:text-left relative">
-          <div className="text-gray mb-4">{property.type}</div>
-          <h1 className="text-3xl font-bold mb-4">{property.name}</h1>
-          <Link
-            className="absolute top-10 right-10 text-2xl bg-teaGreen  hover:bg-opacity-70 text-gray px-4 py-2 rounded-full text-center"
-            href={`/properties/${property._id}/reservation`}
-          >
-            Reserve now
-          </Link>
-
-          <div className="text-gray mb-4 flex align-middle justify-center md:justify-start">
-            <FaMapMarker className="text-lg mr-2 text-persianGreen" />
-            <p className="text-persianGreen">
-              {property.location.street} {property.location.city}{" "}
-              {property.location.country}
-            </p>
+      {isOpen && (
+        <div className="col-start-1 col-end-7 rounded-lg shadow-lg bg-cosmicLatte ">
+          <div className="flex justify-between">
+            <h2 className="text-2xl p-5">Reservation Form</h2>
+            <button className="pr-5" onClick={() => setIsOpen(false)}>
+              <FaTimes />
+            </button>
           </div>
 
-          <h3 className="text-lg font-bold my-6 text-gray p-2">
-            Rates & Options
-          </h3>
-          <div className="flex flex-col md:flex-row justify-around">
-            <div className="flex items-center justify-center mb-4 border-b border-gray md:border-b-0 pb-4 md:pb-0">
-              <div className="mr-2 font-bold">Nightly</div>
-              <div className="text-2xl font-bold text-slateBlue">
-                {property.rates.nightly ? (
-                  `€${property.rates.nightly.toLocaleString()}`
-                ) : (
-                  <FaTimes className="text-red" />
-                )}
-              </div>
-            </div>
-            <div className="flex items-center justify-center mb-4 border-b border-gray md:border-b-0 pb-4 md:pb-0">
-              <div className="mr-2 font-bold">Weekly</div>
-              <div className="text-2xl text-slateBlue font-bold">
-                {property.rates.weekly ? (
-                  `€${property.rates.weekly.toLocaleString()}`
-                ) : (
-                  <FaTimes className="text-red" />
-                )}
-              </div>
-            </div>
-            <div className="flex items-center justify-center mb-4 pb-4 md:pb-0">
-              <div className="text-gray mr-2 font-bold">Monthly</div>
-              <div className="text-2xl font-bold text-slateBlue">
-                {property.rates.monthly ? (
-                  `€${property.rates.monthly.toLocaleString()}`
-                ) : (
-                  <FaTimes className="text-red" />
-                )}
-              </div>
-            </div>
+          <div className="flex justify-center gap-20">
+            <DateSelector />
+            <ReservationForm />
           </div>
         </div>
+      )}
 
-        <div className="p-6 rounded-lg shadow-lg mt-6">
-          <h3 className="text-lg font-bold mb-6">Description & Details</h3>
-          <div className="flex justify-center gap-4 mb-4 text-xl space-x-9">
-            <p>
-              <FaBed className="inline-block mr-2" /> {property.beds}
-              <span className="hidden sm:inline"> Beds</span>
-            </p>
-            <p>
-              <FaBath className="inline-block mr-2" /> {property.baths}
-              <span className="hidden sm:inline"> Baths</span>
-            </p>
-            <p>
-              <FaRulerCombined className="inline-block mr-2" />
-              {property.square_metre}{" "}
-              <span className="hidden sm:inline">m&#178;</span>
-            </p>
-          </div>
-          <p className="text-gray-500 mb-4 text-center">
-            {property.description}
+      <div className="col-start-1 col-end-3 rounded-lg shadow-lg p-5">
+        <div className="flex gap-10">
+          <h1 className="text-3xl font-bold mb-4">{property.name}</h1>
+
+          <p className="text-4xl font-bold text-slateBlue">
+            {`€${property.rates.nightly.toLocaleString()}`}
           </p>
         </div>
 
-        <div className="p-6 rounded-lg shadow-lg mt-6">
-          <h3 className="text-lg font-bold mb-6">Amenities</h3>
-
-          <ul className="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none">
-            {property.amenities.map((amenity, index) => (
-              <li key={index}>
-                <FaCheck className="inline-block mr-2 text-persianGreen" />
-                {amenity}
-              </li>
-            ))}
-          </ul>
+        <div className="grid mt-10">
+          <button
+            className="text-2xl bg-teaGreen  hover:bg-opacity-70 text-gray px-4 py-2 rounded-full text-center"
+            onClick={() => setIsOpen(true)}
+          >
+            Reserve now
+          </button>
         </div>
+      </div>
+
+      <div className="col-start-3 col-end-5 rounded-lg shadow-lg p-5">
+        <h3 className="text-lg font-bold mb-6">Description & Details</h3>
+        <div className="flex justify-center gap-4 mb-4 text-xl space-x-9">
+          <p>
+            <FaBed className="inline-block mr-2" /> {property.beds}
+            <span className="hidden sm:inline"> Beds</span>
+          </p>
+          <p>
+            <FaBath className="inline-block mr-2" /> {property.baths}
+            <span className="hidden sm:inline"> Baths</span>
+          </p>
+          <p>
+            <FaRulerCombined className="inline-block mr-2" />
+            {property.square_metre}{" "}
+            <span className="hidden sm:inline">m&#178;</span>
+          </p>
+        </div>
+        <p className="text-gray-500 mb-4 text-center">{property.description}</p>
+      </div>
+
+      <div className="col-start-5  col-end-7 rounded-lg shadow-lg p-5">
+        <h3 className="text-lg font-bold mb-6">Amenities</h3>
+
+        <ul className="m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 list-none">
+          {property.amenities.map((amenity, index) => (
+            <li key={index}>
+              <FaCheck className="inline-block mr-2 text-persianGreen" />
+              {amenity}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );

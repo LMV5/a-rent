@@ -1,23 +1,34 @@
 "use client";
 
 import { useState } from "react";
+import { useReservation } from "@/context/ReservationContext";
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based in JavaScript
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
 
 const ReservationForm = ({ propertyId, rates, onSubmit }) => {
+  const { range, resetRange } = useReservation();
+
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [totalAmount, setTotalAmount] = useState(0);
 
-  const handleStartDateChange = (date) => {
-    setStartDate(date);
-    calculateTotalAmount(date, endDate);
-  };
+  // const handleStartDateChange = (date) => {
+  //   setStartDate(date);
+  //   calculateTotalAmount(date, endDate);
+  // };
 
-  const handleEndDateChange = (date) => {
-    setEndDate(date);
-    calculateTotalAmount(startDate, date);
-  };
+  // const handleEndDateChange = (date) => {
+  //   setEndDate(date);
+  //   calculateTotalAmount(startDate, date);
+  // };
 
   const calculateTotalAmount = (start, end) => {
     if (start && end) {
@@ -42,10 +53,7 @@ const ReservationForm = ({ propertyId, rates, onSubmit }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="max-w-lg mx-auto p-6 rounded shadow-md"
-    >
+    <form onSubmit={handleSubmit} className="px-2 min-w-72">
       <div className="mb-4">
         <label className="block text-gray">Name:</label>
         <input
@@ -67,17 +75,38 @@ const ReservationForm = ({ propertyId, rates, onSubmit }) => {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray">Start Date:</label>
+        <label className="block text-gray">
+          Start Date: {range?.from ? formatDate(String(range?.from)) : ""}
+        </label>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700">End Date:</label>
+        <label className="block text-gray">
+          End Date: {range?.from ? formatDate(String(range?.to)) : ""}
+        </label>
       </div>
       <div className="mb-4">
         <p className="text-gray">Total Amount: ${totalAmount}</p>
       </div>
-      <button type="submit" className="w-full bg-greenTea py-2 rounded">
-        Submit
-      </button>
+      <div className="flex gap-5 py-8">
+        {range?.from || range?.to ? (
+          <button
+            className="bg-red bg-opacity-40 hover:bg-opacity-70 text-gray font-bold py-3 px-7 rounded-full focus:outline-none focus:shadow-outline"
+            onClick={() => {
+              resetRange();
+              setName("");
+              setEmail("");
+            }}
+          >
+            Clear
+          </button>
+        ) : null}
+        <button
+          className="bg-slateBlue hover:bg-opacity-70 text-gray font-bold py-3 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
     </form>
   );
 };
