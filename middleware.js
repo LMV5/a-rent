@@ -4,7 +4,7 @@ export const config = {
     "/properties/add",
     "/profile",
     "/profile/saved",
-    "/profile/reservations",
+    "/profile/reservation",
     "/profile/listings",
     "/messages",
   ],

@@ -7,7 +7,12 @@ const ReservationSchema = new Schema(
       ref: "User",
       required: true,
     },
-    guest: {
+    guestId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    guestData: {
       name: {
         type: String,
         required: [true, "Guest name is required"],
@@ -27,7 +32,7 @@ const ReservationSchema = new Schema(
         required: [true, "End date is required"],
         validate: {
           validator: function (value) {
-            return value > this.startDate;
+            return value > this.dates.startDate;
           },
           message: "End date must be after start date",
         },
@@ -37,7 +42,7 @@ const ReservationSchema = new Schema(
       type: Number,
       required: true,
     },
-    propertyId: {
+    property: {
       type: Schema.Types.ObjectId,
       ref: "Property",
       required: true,
@@ -55,6 +60,7 @@ const ReservationSchema = new Schema(
   },
   {
     timestamps: true,
+    // collection: "Reservations",
   }
 );
 

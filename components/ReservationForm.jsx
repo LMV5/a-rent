@@ -4,47 +4,76 @@ import { useState } from "react";
 import { useReservation } from "@/context/ReservationContext";
 import { useParams } from "next/navigation";
 import { differenceInDays } from "date-fns";
+import { toast } from "react-toastify";
+import { useUser } from "@/context/UserContext";
 
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based in JavaScript
-  const year = date.getFullYear();
-  return `${day}/${month}/${year}` || "";
-}
+// function formatDate(dateString) {
+//   const date = new Date(dateString);
+//   const day = String(date.getDate()).padStart(2, "0");
+//   const month = String(date.getMonth() + 1).padStart(2, "0");
+//   const year = date.getFullYear();
+//   return `${day}/${month}/${year}`;
+// }
 
 const ReservationForm = ({ property }) => {
   const { range, resetRange } = useReservation();
-
+  const { user } = useUser();
+  console.log(user);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const { id: propertyId } = useParams();
 
-  const startDate = range?.from ? formatDate(String(range.from)) : "";
-  const endDate = range?.to ? formatDate(String(range.to)) : "";
-  const price = property.rates.nightly;
-  const numNights = differenceInDays(range?.to, range?.from);
+  const startDate = range?.from ? String(range.from) : "";
+  const endDate = range?.to ? String(range.to) : "";
+  // const startDate = range?.from;
+  // const endDate = range?.to;
+  console.log(startDate);
+  console.log(endDate);
+  const price = property?.rates?.nightly || 0;
+  const numNights =
+    range?.from && range?.to ? differenceInDays(range?.to, range?.from) : 0;
   const totalAmount = numNights * price;
-  console.log(price, numNights, totalAmount, startDate, endDate);
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const formData = {
-  //     owner: "6617ecaa2c847bd2317ab3e3",
-  //     guest: { name, email },
-  //     dates: { startDate, endDate },
-  //     numNights: Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)),
-  //     propertyId,
-  //     rates,
-  //     totalAmount,
-  //   };
-  //   await onSubmit(formData);
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = {
+      owner: property.owner,
+      property,
+      dates: { startDate, endDate },
+      numNights,
+      rates: { nightly: price },
+      totalAmount,
+      // guestId: user._id,
+      guestId: "6620d350928168756b91c3c6",
+      guestData: { name, email },
+    };
+
+    try {
+      const res = await fetch(`/api/properties/${propertyId}/reservation`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to create reservation");
+      }
+
+      toast.success("Reservation created successfully");
+      resetRange();
+      setName("");
+      setEmail("");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
-    // <form onSubmit={handleSubmit} className="px-2 min-w-72">
-    <form className="px-2 min-w-72">
+    <form onSubmit={handleSubmit} className="px-2 min-w-72">
       <div className="mb-4">
         <label className="block text-gray">Name:</label>
         <input

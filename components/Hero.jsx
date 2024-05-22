@@ -1,5 +1,3 @@
-import PropertySearchForm from "./PropertySearchForm";
-
 function Hero() {
   return (
     <section className="bg-slateBlue py-20 mb-4">
@@ -12,7 +10,6 @@ function Hero() {
             Rent Smarter, Live Better: Renting Made Simple
           </p>
         </div>
-        <PropertySearchForm />
       </div>
     </section>
   );

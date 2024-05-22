@@ -1,11 +1,15 @@
 import Hero from "@/components/Hero";
-import HomeProperties from "@/components/HomeProperties";
+import LinkButton from "@/components/LinkButton";
 
 export default function Page() {
   return (
     <>
       <Hero />
-      <HomeProperties />
+      <section className="m-auto max-w-lg my-10 px-6">
+        <LinkButton href="/properties" style="viewBtn">
+          View All Properties
+        </LinkButton>
+      </section>
     </>
   );
 }

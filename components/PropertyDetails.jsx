@@ -5,23 +5,23 @@ import {
   FaBath,
   FaRulerCombined,
   FaCheck,
-  FaTimes,
+  // FaTimes,
 } from "react-icons/fa";
 
 import { useState } from "react";
-import DateSelector from "@/components/DateSelector";
-import ReservationForm from "@/components/ReservationForm";
+// import DateSelector from "@/components/DateSelector";
+// import ReservationForm from "@/components/ReservationForm";
+import Link from "next/link";
 
 function PropertyDetails({ property }) {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      {isOpen && (
+      {/* {isOpen && (
         <div className="col-start-1 col-end-7 rounded-lg shadow-lg bg-cosmicLatte ">
-          <div className="flex justify-between">
-            <h2 className="text-2xl p-5">Reservation Form</h2>
-            <button className="pr-5" onClick={() => setIsOpen(false)}>
+          <div className="flex justify-end">
+            <button className="pr-5 pt-5" onClick={() => setIsOpen(false)}>
               <FaTimes />
             </button>
           </div>
@@ -31,7 +31,7 @@ function PropertyDetails({ property }) {
             <ReservationForm property={property} />
           </div>
         </div>
-      )}
+      )} */}
 
       <div className="col-start-1 col-end-3 rounded-lg shadow-lg p-5">
         <div className="flex gap-10">
@@ -43,12 +43,13 @@ function PropertyDetails({ property }) {
         </div>
 
         <div className="grid mt-10">
-          <button
+          <Link
             className="text-2xl bg-teaGreen  hover:bg-opacity-70 text-gray px-4 py-2 rounded-full text-center"
-            onClick={() => setIsOpen(true)}
+            // onClick={() => setIsOpen(true)}
+            href={`/properties/${property._id}/reservation`}
           >
             Reserve now
-          </button>
+          </Link>
         </div>
       </div>
 

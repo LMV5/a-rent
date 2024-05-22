@@ -157,30 +157,7 @@ function NavBar() {
                     >
                       Your Profile
                     </Link>
-                    {/* <Link
-                      href="/profile/reservations"
-                      className="block px-4 py-2 text-sm hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-75"
-                      role="menuitem"
-                      tabIndex="-1"
-                      id="user-menu-item-2"
-                      onClick={() => {
-                        setIsProfileMenuOpen(false);
-                      }}
-                    >
-                      Reservations
-                    </Link>
-                    <Link
-                      href="/properties/saved"
-                      className="block px-4 py-2 text-sm hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-75"
-                      role="menuitem"
-                      tabIndex="-1"
-                      id="user-menu-item-2"
-                      onClick={() => {
-                        setIsProfileMenuOpen(false);
-                      }}
-                    >
-                      Saved Properties
-                    </Link> */}
+
                     <button
                       onClick={() => {
                         setIsProfileMenuOpen(false);

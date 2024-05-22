@@ -11,7 +11,7 @@ import {
 
 export default function SideNavigation() {
   const pathname = usePathname();
-  console.log(pathname);
+
   return (
     <div className="mt-2 ml-8 w-48 rounded-md py-1">
       <div className="flex">
@@ -22,7 +22,7 @@ export default function SideNavigation() {
 
       <div className="flex">
         <LinkButton
-          href="/profile/reservations"
+          href="/profile/reservation"
           style="menuItem"
           pathname={pathname}
         >
