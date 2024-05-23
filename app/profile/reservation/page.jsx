@@ -35,8 +35,8 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="m-auto text-xl text-gray font-semibold mb-4 mt-4">
-      <h2 className="mb-7">Your reservations</h2>
+    <div className="max-w-4xl">
+      <h2 className="text-xl font-semibold my-4">Your reservations</h2>
       {loading ? (
         <Spinner loading={loading} />
       ) : (
@@ -49,7 +49,7 @@ export default function Page() {
               </Link>
             </p>
           ) : (
-            <div className="">
+            <div className="flex flex-col gap-5">
               {reservations.map((reservation) => (
                 <ReservationCard
                   key={reservation._id}

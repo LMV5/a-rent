@@ -7,14 +7,6 @@ import { differenceInDays } from "date-fns";
 import { toast } from "react-toastify";
 import { useUser } from "@/context/UserContext";
 
-// function formatDate(dateString) {
-//   const date = new Date(dateString);
-//   const day = String(date.getDate()).padStart(2, "0");
-//   const month = String(date.getMonth() + 1).padStart(2, "0");
-//   const year = date.getFullYear();
-//   return `${day}/${month}/${year}`;
-// }
-
 const ReservationForm = ({ property }) => {
   const { range, resetRange } = useReservation();
   const { user } = useUser();
@@ -23,9 +15,10 @@ const ReservationForm = ({ property }) => {
   const [email, setEmail] = useState("");
 
   const { id: propertyId } = useParams();
+  console.log(typeof range.from);
+  const startDate = range?.from ? Number(range.from) : "";
+  const endDate = range?.to ? Number(range.to) : "";
 
-  const startDate = range?.from ? String(range.from) : "";
-  const endDate = range?.to ? String(range.to) : "";
   // const startDate = range?.from;
   // const endDate = range?.to;
   console.log(startDate);
@@ -41,7 +34,10 @@ const ReservationForm = ({ property }) => {
     const formData = {
       owner: property.owner,
       property,
-      dates: { startDate, endDate },
+      dates: {
+        startDate: new Date(startDate),
+        endDate: new Date(endDate),
+      },
       numNights,
       rates: { nightly: price },
       totalAmount,
