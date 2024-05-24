@@ -25,13 +25,15 @@ const PropertyCard = ({ property }) => {
       <div className="p-4">
         <div className="text-left md:text-center lg:text-left mb-6">
           <div className="text-gray">{property.type}</div>
-          <h3 className="text-xl font-bold text-gray">{property.name}</h3>
+          <h3 className="text-xl font-bold text-gray sm:text-2xl">
+            {property.name}
+          </h3>
         </div>
         <h3 className="absolute top-[10px] right-[10px] bg-teaGreen px-4 py-2 rounded-lg text-gray font-bold text-right md:text-center lg:text-right">
           €{getRateDisplay()}
         </h3>
 
-        <div className="flex justify-center gap-4 text-gray mb-4">
+        <div className="flex justify-center gap-4 text-gray mb-4 text-sm ssm:text-base sm:text-md">
           <p>
             <FaUserFriends className="inline mr-2 pb-1" />
             {property.numGuests}
@@ -52,7 +54,7 @@ const PropertyCard = ({ property }) => {
           </p>
         </div>
 
-        <div className="flex flex-col lg:flex-row justify-between mb-4">
+        <div className="flex flex-col justify-between mb-4">
           <LinkButton href={`/properties/${property._id}`} style="details">
             Details
           </LinkButton>

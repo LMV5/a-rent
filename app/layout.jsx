@@ -16,7 +16,7 @@ const font = Josefin_Sans({
 
 export const metadata = {
   title: "A-Rent | Find The Perfect Rental",
-  description: "Find your dream rental property",
+  description: "Find Your Dream Apartment",
   keywords: "rental, find rental, find properties, apartment, hotel, room",
 };
 
@@ -27,9 +27,7 @@ export default function RootLayout({ children }) {
         <UserProvider>
           <ReservationProvider>
             <html lang="en">
-              <body
-                className={`${font.className} flex flex-col min-height: 100vh`}
-              >
+              <body className={`${font.className} flex flex-col min-h-full`}>
                 <NavBar />
                 <main className="flex-1">{children}</main>
                 <ToastContainer />

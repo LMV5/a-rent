@@ -7,7 +7,7 @@ import { differenceInDays } from "date-fns";
 import { toast } from "react-toastify";
 import { useUser } from "@/context/UserContext";
 
-const ReservationForm = ({ property }) => {
+const ReservationForm = ({ property, id }) => {
   const { range, resetRange } = useReservation();
   const { user } = useUser();
   console.log(user);
@@ -19,10 +19,6 @@ const ReservationForm = ({ property }) => {
   console.log(typeof range.from);
   const startDate = range?.from ? Number(range.from) : "";
   const endDate = range?.to ? Number(range.to) : "";
-  // const startDate = range?.from;
-  // const endDate = range?.to;
-  console.log(numGuests);
-  console.log(endDate);
   const price = property?.rates?.nightly || 0;
   const numNights =
     range?.from && range?.to ? differenceInDays(range?.to, range?.from) : 0;
@@ -42,8 +38,8 @@ const ReservationForm = ({ property }) => {
       numNights,
       rates: { nightly: price },
       totalAmount,
-      // guestId: user._id,
-      guestId: "6620d350928168756b91c3c6",
+      guestId: id,
+      // guestId: "6620d350928168756b91c3c6",
       guestData: { name, email, numGuests },
     };
 
@@ -64,6 +60,7 @@ const ReservationForm = ({ property }) => {
       resetRange();
       setName("");
       setEmail("");
+      setNumGuests("");
     } catch (error) {
       toast.error(error.message);
     }

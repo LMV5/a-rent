@@ -27,7 +27,7 @@ function PropertyImages({ images }) {
               )}
             </Item>
           ) : (
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-4 ">
               {images.map((image, index) => (
                 <div key={index} className={"flex"}>
                   <Item
@@ -42,7 +42,7 @@ function PropertyImages({ images }) {
                         onClick={open}
                         src={image}
                         alt="image of the property"
-                        className="object-cover h-[400px] w-full rounded-xl"
+                        className="object-cover h-28 ssm:h-36 md:h-72 w-full rounded-xl"
                         width={0}
                         height={0}
                         sizes="100vw"

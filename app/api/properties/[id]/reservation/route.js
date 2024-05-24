@@ -16,7 +16,6 @@ export async function GET() {
 
     const { userId } = sessionUser;
     const reservations = await Reservation.find({ guestId: userId });
-    console.log(reservations);
     return new Response(JSON.stringify(reservations), { status: 200 });
   } catch (error) {
     console.log(error);

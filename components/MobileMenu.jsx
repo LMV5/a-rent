@@ -3,10 +3,10 @@ import Link from "next/link";
 function MobileMenu({ session, providers, signIn, setIsMobileMenuOpen }) {
   return (
     <div id="mobile-menu">
-      <div className="space-y-1 px-2 pb-3 pt-2">
+      <div className="space-y-1 px-5 pb-3 pt-2">
         <Link
           href="/"
-          className="flex items-center text-gray hover:bg-cosmicLatte hover:text-gray hover:transition-all hover:delay-50 rounded-md px-3 py-2"
+          className="flex items-center text-white hover:bg-cosmicLatte hover:bg-opacity-25 hover:text-gray hover:transition-all hover:delay-50 rounded-md px-3 py-2"
           onClick={() => {
             setIsMobileMenuOpen(false);
           }}
@@ -15,7 +15,7 @@ function MobileMenu({ session, providers, signIn, setIsMobileMenuOpen }) {
         </Link>
         <Link
           href="/properties"
-          className="flex items-center text-gray hover:bg-cosmicLatte hover:text-gray hover:transition-all hover:delay-50 rounded-md px-3 py-2"
+          className="flex items-center text-white hover:bg-cosmicLatte hover:bg-opacity-25 hover:text-gray hover:transition-all hover:delay-50 rounded-md px-3 py-2"
           onClick={() => {
             setIsMobileMenuOpen(false);
           }}
@@ -25,7 +25,7 @@ function MobileMenu({ session, providers, signIn, setIsMobileMenuOpen }) {
         {session && (
           <Link
             href="/properties/add"
-            className="flex items-center text-gray hover:bg-cosmicLatte hover:text-gray hover:transition-all hover:delay-50 rounded-md px-3 py-2"
+            className="flex items-center text-white hover:bg-cosmicLatte hover:bg-opacity-25 hover:text-gray hover:transition-all hover:delay-50 rounded-md px-3 py-2"
             onClick={() => {
               setIsMobileMenuOpen(false);
             }}
@@ -40,7 +40,7 @@ function MobileMenu({ session, providers, signIn, setIsMobileMenuOpen }) {
             <button
               onClick={() => signIn(provider.id)}
               key={index}
-              style="flex items-center text-gray rounded-md px-3 py-2 my-4"
+              className="items-center text-white rounded-md px-3 py-2 my-4 hover:bg-cosmicLatte hover:bg-opacity-25 hover:text-gray hover:transition-all hover:delay-50"
             >
               Login or Register
             </button>

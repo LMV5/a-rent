@@ -456,6 +456,7 @@ function PropertyAddForm() {
               type="number"
               id="nightly_rate"
               name="rates.nightly"
+              min="1"
               className="border rounded w-full py-2 px-3"
               value={fields.rates.nightly}
               onChange={handleChange}

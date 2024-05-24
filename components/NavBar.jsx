@@ -28,7 +28,7 @@ function NavBar() {
   }, []);
 
   return (
-    <nav className="bg-teaGreen border-b border-periwinkle">
+    <nav className="bg-persianGreen">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -36,7 +36,7 @@ function NavBar() {
             <button
               type="button"
               id="mobile-dropdown-button"
-              className="relative inline-flex items-center justify-center rounded-md p-2 text-gray focus:outline-none focus:ring-2 focus:ring-inset"
+              className="relative inline-flex text-white items-center justify-center rounded-md pl-2 focus:outline-none focus:ring-2 focus:ring-inset"
               aria-controls="mobile-menu"
               aria-expanded="false"
               onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
@@ -59,7 +59,7 @@ function NavBar() {
             </button>
           </div>
 
-          <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start">
+          <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start text-xl">
             {/* <!-- Logo --> */}
             <Logo />
             {/* <!-- Desktop Menu Hidden below md screens --> */}
@@ -87,7 +87,7 @@ function NavBar() {
                     <button
                       onClick={() => signIn(provider.id)}
                       key={index}
-                      className="flex items-center text-gray hover:bg-slateBlue hover:bg-opacity-45 rounded-md px-3 py-2"
+                      className="text-xl flex items-center text-white hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-25 rounded-md px-3 py-4"
                     >
                       <FaGoogle className="text-white mr-2" />
                       <span>Login or Register</span>

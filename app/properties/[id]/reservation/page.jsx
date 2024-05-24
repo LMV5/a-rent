@@ -18,7 +18,6 @@ function Page() {
 
       try {
         const property = await fetchProperty(id);
-        // console.log(id);
         setProperty(property);
       } catch (error) {
         console.log("Error fetching property:", error);
@@ -43,7 +42,7 @@ function Page() {
           <div className="col-start-1 col-end-7 rounded-lg shadow-lg bg-cosmicLatte ">
             <div className="flex justify-center gap-20">
               <DateSelector />
-              <ReservationForm property={property} />
+              <ReservationForm id={id} property={property} />
             </div>
           </div>
         </>

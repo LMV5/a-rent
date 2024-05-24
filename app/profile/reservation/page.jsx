@@ -19,7 +19,6 @@ export default function Page() {
         if (res.status === 200) {
           const data = await res.json();
           setReservation(data);
-          console.log(data);
         } else {
           console.log(res.statusText);
           toast.error("Failed to fetch reservations");

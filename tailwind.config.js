@@ -18,6 +18,7 @@ module.exports = {
       ssm: "400px",
       sm: "600px",
       md: "800px",
+      lg: "1000px",
     },
     colors: {
       gray: "#262626",
@@ -27,6 +28,7 @@ module.exports = {
       persianGreen: "#1B998B",
       red: "#ED254E",
       cosmicLatte: "#F8F4E3",
+      white: "#fff",
     },
   },
   plugins: [],

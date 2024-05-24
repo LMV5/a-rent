@@ -17,8 +17,7 @@ function formatDate(dateString) {
 function ReservationCard({ reservation }) {
   const { guestData, dates, numNights, totalAmount, propertyName } =
     reservation;
-
-  console.log(guestData, dates, numNights, totalAmount);
+    
   return (
     <div className="border-gray rounded-lg shadow-lg p-5 flex gap-5">
       <p>
