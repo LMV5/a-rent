@@ -19,16 +19,13 @@ function PropertyEditForm() {
       city: "",
       country: "",
       zipcode: "",
-      lat: "",
-      lng: "",
     },
     beds: "",
     baths: "",
+    numGuests: "",
     square_metre: "",
     amenities: [],
     rates: {
-      weekly: "",
-      monthly: "",
       nightly: "",
     },
     seller_info: {
@@ -148,8 +145,6 @@ function PropertyEditForm() {
             onChange={handleChange}
           >
             <option value="Apartment">Apartment</option>
-            <option value="Hotel">Hotel</option>
-            <option value="Other">Other</option>
           </select>
         </div>
         <div className="mb-4">
@@ -223,24 +218,6 @@ function PropertyEditForm() {
             value={fields.location.zipcode}
             onChange={handleChange}
           />
-          <input
-            type="text"
-            id="lat"
-            name="location.lat"
-            className="border rounded w-full py-2 px-3 mb-2"
-            placeholder="Lat"
-            value={fields.location.lat}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            id="lng"
-            name="location.lng"
-            className="border rounded w-full py-2 px-3 mb-2"
-            placeholder="Lng"
-            value={fields.location.lng}
-            onChange={handleChange}
-          />
         </div>
 
         <div className="mb-4 flex flex-wrap">
@@ -289,6 +266,24 @@ function PropertyEditForm() {
               className="border rounded w-full py-2 px-3"
               required
               value={fields.square_metre}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="w-full sm:w-1/3 px-2">
+            <label
+              htmlFor="numGuests"
+              className="block text-gray font-bold mb-2"
+            >
+              Max number of guests
+            </label>
+            <input
+              type="number"
+              id="numGuests"
+              name="numGuests"
+              min="1"
+              className="border rounded w-full py-2 px-3"
+              required
+              value={fields.numGuests}
               onChange={handleChange}
             />
           </div>
@@ -485,36 +480,8 @@ function PropertyEditForm() {
         </div>
 
         <div className="mb-4 p-4">
-          <label className="block text-gray font-bold mb-2">
-            Rates (Leave blank if not applicable)
-          </label>
+          <label className="block text-gray font-bold mb-2">Rates</label>
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-            <div className="flex items-center">
-              <label htmlFor="weekly_rate" className="mr-2">
-                Weekly
-              </label>
-              <input
-                type="number"
-                id="weekly_rate"
-                name="rates.weekly"
-                className="border rounded w-full py-2 px-3"
-                value={fields.rates.weekly}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="flex items-center">
-              <label htmlFor="monthly_rate" className="mr-2">
-                Monthly
-              </label>
-              <input
-                type="number"
-                id="monthly_rate"
-                name="rates.monthly"
-                className="border rounded w-full py-2 px-3"
-                value={fields.rates.monthly}
-                onChange={handleChange}
-              />
-            </div>
             <div className="flex items-center">
               <label htmlFor="nightly_rate" className="mr-2">
                 Nightly

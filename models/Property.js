@@ -31,12 +31,6 @@ const PropertySchema = new Schema(
       zipcode: {
         type: String,
       },
-      lat: {
-        type: String,
-      },
-      lng: {
-        type: String,
-      },
     },
     beds: {
       type: Number,
@@ -50,6 +44,10 @@ const PropertySchema = new Schema(
       type: Number,
       required: true,
     },
+    numGuests: {
+      type: Number,
+      required: true,
+    },
     amenities: [
       {
         type: String,
@@ -57,12 +55,6 @@ const PropertySchema = new Schema(
     ],
     rates: {
       nightly: {
-        type: Number,
-      },
-      weekly: {
-        type: Number,
-      },
-      monthly: {
         type: Number,
       },
     },

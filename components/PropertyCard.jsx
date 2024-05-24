@@ -1,16 +1,12 @@
 import Image from "next/image";
 import LinkButton from "./LinkButton";
-import { FaBed, FaBath, FaRulerCombined, FaMoneyBill } from "react-icons/fa";
+import { FaBed, FaBath, FaRulerCombined, FaUserFriends } from "react-icons/fa";
 
 const PropertyCard = ({ property }) => {
   const getRateDisplay = () => {
     const { rates } = property;
 
-    if (rates.monthly) {
-      return `${rates.monthly.toLocaleString()}/mo`;
-    } else if (rates.weekly) {
-      return `${rates.weekly.toLocaleString()}/wk`;
-    } else if (rates.nightly) {
+    if (rates.nightly) {
       return `${rates.nightly.toLocaleString()}/night`;
     }
   };
@@ -37,36 +33,23 @@ const PropertyCard = ({ property }) => {
 
         <div className="flex justify-center gap-4 text-gray mb-4">
           <p>
-            <FaBed className="inline mr-2" /> {property.beds}
+            <FaUserFriends className="inline mr-2 pb-1" />
+            {property.numGuests}
+            <span className="hidden lg:inline"> Guests</span>
+          </p>
+          <p>
+            <FaBed className="inline mr-2 pb-1" /> {property.beds}
             <span className="md:hidden lg:inline"> Beds</span>
           </p>
           <p>
-            <FaBath className="inline mr-2" /> {property.baths}
+            <FaBath className="inline mr-2 pb-1" /> {property.baths}
             <span className="md:hidden lg:inline"> Baths</span>
           </p>
           <p>
-            <FaRulerCombined className="inline mr-2" />
+            <FaRulerCombined className="inline mr-2 pb-1" />
             {property.square_metre}{" "}
             <span className="md:hidden lg:inline">m&#178;</span>
           </p>
-        </div>
-
-        <div className="flex justify-center gap-3 text-slateBlue text-[13px] mb-4">
-          {property.rates.nightly && (
-            <p>
-              <FaMoneyBill className="inline mr-1" /> Nightly
-            </p>
-          )}
-          {property.rates.weekly && (
-            <p>
-              <FaMoneyBill className="inline mr-2" /> Weekly
-            </p>
-          )}
-          {property.rates.monthly && (
-            <p>
-              <FaMoneyBill className="inline mr-2" /> Monthly
-            </p>
-          )}
         </div>
 
         <div className="flex flex-col lg:flex-row justify-between mb-4">

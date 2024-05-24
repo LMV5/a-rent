@@ -85,11 +85,10 @@ export const PUT = async (request, { params }) => {
       },
       beds: formData.get("beds"),
       baths: formData.get("baths"),
+      numGuests: formData.get("numGuests"),
       square_metre: formData.get("square_metre"),
       amenities,
       rates: {
-        weekly: formData.get("rates.weekly"),
-        monthly: formData.get("rates.monthly"),
         nightly: formData.get("rates.nightly"),
       },
       seller_info: {

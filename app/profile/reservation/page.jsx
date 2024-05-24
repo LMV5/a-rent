@@ -35,7 +35,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="max-w-4xl">
+    <div className="max-w-6xl">
       <h2 className="text-xl font-semibold my-4">Your reservations</h2>
       {loading ? (
         <Spinner loading={loading} />

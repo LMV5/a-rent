@@ -21,6 +21,10 @@ const ReservationSchema = new Schema(
         type: String,
         required: [true, "Guest email is required"],
       },
+      numGuests: {
+        type: Number,
+        required: [true, "Number of guests is required"],
+      },
     },
     dates: {
       startDate: {
@@ -44,6 +48,11 @@ const ReservationSchema = new Schema(
     },
     property: {
       type: Schema.Types.ObjectId,
+      ref: "Property",
+      required: true,
+    },
+    propertyName: {
+      type: String,
       ref: "Property",
       required: true,
     },

@@ -5,6 +5,7 @@ import {
   FaBath,
   FaRulerCombined,
   FaCheck,
+  FaUserFriends,
   // FaTimes,
 } from "react-icons/fa";
 
@@ -15,7 +16,7 @@ import Link from "next/link";
 
 function PropertyDetails({ property }) {
   // const [isOpen, setIsOpen] = useState(false);
-
+  console.log(property.numGuests);
   return (
     <>
       {/* {isOpen && (
@@ -57,15 +58,20 @@ function PropertyDetails({ property }) {
         <h3 className="text-lg font-bold mb-6">Description & Details</h3>
         <div className="flex justify-center gap-4 mb-4 text-xl space-x-9">
           <p>
-            <FaBed className="inline-block mr-2" /> {property.beds}
+            <FaUserFriends className="inline-block mr-2 pb-1" />{" "}
+            {property.numGuests}
+            <span className="hidden sm:inline"> Guests</span>
+          </p>
+          <p>
+            <FaBed className="inline-block mr-2 pb-1" /> {property.beds}
             <span className="hidden sm:inline"> Beds</span>
           </p>
           <p>
-            <FaBath className="inline-block mr-2" /> {property.baths}
+            <FaBath className="inline-block mr-2 pb-1" /> {property.baths}
             <span className="hidden sm:inline"> Baths</span>
           </p>
           <p>
-            <FaRulerCombined className="inline-block mr-2" />
+            <FaRulerCombined className="inline-block mr-2 pb-1" />
             {property.square_metre}{" "}
             <span className="hidden sm:inline">m&#178;</span>
           </p>

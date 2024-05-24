@@ -13,15 +13,15 @@ const ReservationForm = ({ property }) => {
   console.log(user);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [numGuests, setNumGuests] = useState(1);
 
   const { id: propertyId } = useParams();
   console.log(typeof range.from);
   const startDate = range?.from ? Number(range.from) : "";
   const endDate = range?.to ? Number(range.to) : "";
-
   // const startDate = range?.from;
   // const endDate = range?.to;
-  console.log(startDate);
+  console.log(numGuests);
   console.log(endDate);
   const price = property?.rates?.nightly || 0;
   const numNights =
@@ -34,6 +34,7 @@ const ReservationForm = ({ property }) => {
     const formData = {
       owner: property.owner,
       property,
+      propertyName: property.name,
       dates: {
         startDate: new Date(startDate),
         endDate: new Date(endDate),
@@ -43,7 +44,7 @@ const ReservationForm = ({ property }) => {
       totalAmount,
       // guestId: user._id,
       guestId: "6620d350928168756b91c3c6",
-      guestData: { name, email },
+      guestData: { name, email, numGuests },
     };
 
     try {
@@ -91,10 +92,20 @@ const ReservationForm = ({ property }) => {
         />
       </div>
 
-      <div className="mb-4 text-gray text-md">
-        <p>Start date: {startDate}</p>
-        <p>End date: {endDate}</p>
-        <p>Nights: {numNights || ""}</p>
+      <div className="mb-4 ">
+        <label className="block text-gray">Guests:</label>
+        <select
+          onChange={(e) => setNumGuests(+e.target.value)}
+          className="block w-full px-3 py-3 pr-8 border border-gray rounded leading-tight focus:outline-none focus:shadow-outline-slateBlue focus:border-slateBlue"
+        >
+          {Array.from({ length: 4 }, (_, i) => i + 1).map((num) => (
+            <option className="py-1" value={num} key={num}>
+              {num}
+            </option>
+          ))}
+        </select>
+
+        <p className="pt-4">Nights: {numNights || ""}</p>
         <p className="mt-5 text-2xl">Total Amount: €{totalAmount || 0}</p>
       </div>
       <div className="flex gap-5 pb-2">
