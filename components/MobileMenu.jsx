@@ -42,7 +42,7 @@ function MobileMenu({ session, providers, signIn, setIsMobileMenuOpen }) {
               key={index}
               className="items-center text-white rounded-md px-3 py-2 my-4 hover:bg-cosmicLatte hover:bg-opacity-25 hover:text-gray hover:transition-all hover:delay-50"
             >
-              Login or Register
+              Sign up
             </button>
           ))}
       </div>

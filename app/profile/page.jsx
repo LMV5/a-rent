@@ -9,9 +9,9 @@ export default function Page() {
 
   return (
     <>
-      <h2 className="m-auto text-xl font-semibold mb-4 mt-4 flex gap-5">
+      <h2 className="flex flex-col text-xs sm:text-xl font-semibold gap-5 ml-5 my-7">
         <span>Welcome, {profileName}</span>
-        <span className="block">Email: {profileEmail}</span>
+        <span>Email: {profileEmail}</span>
       </h2>
     </>
   );

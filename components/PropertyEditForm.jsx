@@ -128,7 +128,7 @@ function PropertyEditForm() {
     mounted &&
     !loading && (
       <form onSubmit={handleSubmit}>
-        <h2 className="text-3xl text-center font-semibold mb-6">
+        <h2 className="text-3xl text-center font-semibold my-6 text-gray">
           Edit Property
         </h2>
 
@@ -154,7 +154,7 @@ function PropertyEditForm() {
             id="name"
             name="name"
             className="border rounded w-full py-2 px-3 mb-2"
-            placeholder="eg. Beautiful Apartment In Miami"
+            placeholder="eg. Horizon"
             required
             value={fields.name}
             onChange={handleChange}
@@ -178,7 +178,7 @@ function PropertyEditForm() {
           ></textarea>
         </div>
 
-        <div className="mb-4 p-4">
+        <div className="mb-4">
           <label className="block text-gray font-bold mb-2">Location</label>
           <input
             type="text"
@@ -220,42 +220,41 @@ function PropertyEditForm() {
           />
         </div>
 
-        <div className="mb-4 flex flex-wrap">
-          <div className="w-full sm:w-1/3 pr-2">
-            <label
-              htmlFor="beds"
-              className="block text-gray-700 font-bold mb-2"
-            >
+        <div className="mb-4 grid grid-cols-1 sm:grid-cols-2 sm:gap-2">
+          <div className="w-full">
+            <label htmlFor="beds" className="block text-gray font-bold my-2">
               Beds
             </label>
             <input
               type="number"
               id="beds"
               name="beds"
+              min="1"
               className="border rounded w-full py-2 px-3"
               required
               value={fields.beds}
               onChange={handleChange}
             />
           </div>
-          <div className="w-full sm:w-1/3 px-2">
-            <label htmlFor="baths" className="block text-gray font-bold mb-2">
+          <div className="w-full">
+            <label htmlFor="baths" className="block text-gray font-bold my-2">
               Baths
             </label>
             <input
               type="number"
               id="baths"
               name="baths"
+              min="1"
               className="border rounded w-full py-2 px-3"
               required
               value={fields.baths}
               onChange={handleChange}
             />
           </div>
-          <div className="w-full sm:w-1/3 pl-2">
+          <div className="w-full">
             <label
               htmlFor="square_metre"
-              className="block text-gray font-bold mb-2"
+              className="block text-gray font-bold my-2"
             >
               Square Metre
             </label>
@@ -263,16 +262,17 @@ function PropertyEditForm() {
               type="number"
               id="square_metre"
               name="square_metre"
+              min="1"
               className="border rounded w-full py-2 px-3"
               required
               value={fields.square_metre}
               onChange={handleChange}
             />
           </div>
-          <div className="w-full sm:w-1/3 px-2">
+          <div className="w-full">
             <label
               htmlFor="numGuests"
-              className="block text-gray font-bold mb-2"
+              className="block text-gray font-bold my-2"
             >
               Max number of guests
             </label>
@@ -291,7 +291,7 @@ function PropertyEditForm() {
 
         <div className="mb-4">
           <label className="block text-gray font-bold mb-2">Amenities</label>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 ssm:grid-cols-2 md:grid-cols-3 gap-2">
             <div>
               <input
                 type="checkbox"
@@ -479,8 +479,8 @@ function PropertyEditForm() {
           </div>
         </div>
 
-        <div className="mb-4 p-4">
-          <label className="block text-gray font-bold mb-2">Rates</label>
+        <div className="mb-4">
+          <label className="block text-gray font-bold my-2">Rates</label>
           <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
             <div className="flex items-center">
               <label htmlFor="nightly_rate" className="mr-2">
@@ -553,7 +553,7 @@ function PropertyEditForm() {
 
         <div>
           <button
-            className="bg-teaGreen hover:bg-persianGreen text-gray font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+            className="bg-persianGreen hover:bg-persianGreen hover:bg-opacity-75 text-gray font-bold mpy-2 px-4 mb-4 rounded-full w-full focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Update Property

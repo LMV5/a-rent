@@ -8,6 +8,7 @@ import { ReservationProvider } from "@/context/ReservationContext";
 import { UserProvider } from "@/context/UserContext";
 import "photoswipe/dist/photoswipe.css";
 import { Josefin_Sans } from "next/font/google";
+import "react-day-picker/dist/style.css";
 
 const font = Josefin_Sans({
   subsets: ["latin"],

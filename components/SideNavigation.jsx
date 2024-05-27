@@ -13,10 +13,11 @@ export default function SideNavigation() {
   const pathname = usePathname();
 
   return (
-    <div className="mt-2 ml-8 w-48 rounded-md py-1">
+    <div className="flex rounded-md py-1 ssm:flex-col ssm:min-w-max">
       <div className="flex">
         <LinkButton href="/profile" style="menuItem" pathname={pathname}>
-          <FaHouseUser className="mb-2 mr-3 text-slateBlue" /> Your Profile
+          <FaHouseUser className=" text-slateBlue" />{" "}
+          <span className="hidden ssm:block ssm:px-3">Your Profile</span>
         </LinkButton>
       </div>
 
@@ -26,13 +27,15 @@ export default function SideNavigation() {
           style="menuItem"
           pathname={pathname}
         >
-          <FaCalendarAlt className="mb-2 mr-3 text-slateBlue" /> Reservations
+          <FaCalendarAlt className=" text-slateBlue" />{" "}
+          <span className="hidden ssm:block ssm:px-3">Reservations</span>
         </LinkButton>
       </div>
 
       <div className="flex">
         <LinkButton href="/profile/saved" style="menuItem" pathname={pathname}>
-          <FaBookmark className="mb-2 mr-3 text-slateBlue" /> Saved Properties
+          <FaBookmark className=" text-slateBlue" />{" "}
+          <span className="hidden ssm:block ssm:px-3">Saved Properties</span>
         </LinkButton>
       </div>
 
@@ -42,20 +45,21 @@ export default function SideNavigation() {
           style="menuItem"
           pathname={pathname}
         >
-          <FaClipboardList className="mb-2 mr-3 text-slateBlue" /> Your Listings
+          <FaClipboardList className=" text-slateBlue" />{" "}
+          <span className="hidden ssm:block ssm:px-3">Your Listings</span>
         </LinkButton>
       </div>
 
-      <div className="flex">
+      <div className="flex px-4 ssm:py-3">
         <button
           onClick={() => {
             signOut();
           }}
           href="#"
-          className="block px-4 py-2 text-sm text-gray hover:text-slateBlue "
+          className="block text-sm text-gray hover:text-slateBlue "
         >
-          <FaSignOutAlt className="inline-block mb-2 mr-3 text-slateBlue" />{" "}
-          Sign Out
+          <FaSignOutAlt className="inline-block text-slateBlue" />{" "}
+          <span className="hidden ssm:inline-block ssm:px-2">Sign Out</span>
         </button>
       </div>
     </div>

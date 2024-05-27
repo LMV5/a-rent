@@ -34,12 +34,14 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="max-w-6xl">
-      <h2 className="text-xl font-semibold my-4">Your reservations</h2>
+    <div className="max-w-6xl my-4 ">
+      <h2 className="flex flex-col text-xs sm:text-xl font-semibold gap-5 ml-5 my-4">
+        Your reservations
+      </h2>
       {loading ? (
         <Spinner loading={loading} />
       ) : (
-        <div className="text-lg">
+        <div className="text-lg pr-3  sm:flex sm:gap-10 lg:flex-col">
           {reservations.length === 0 ? (
             <p className="text-lg">
               You have no reservations yet. Check out our{" "}
@@ -48,14 +50,14 @@ export default function Page() {
               </Link>
             </p>
           ) : (
-            <div className="flex flex-col gap-5">
+            <>
               {reservations.map((reservation) => (
                 <ReservationCard
                   key={reservation._id}
                   reservation={reservation}
                 />
               ))}
-            </div>
+            </>
           )}
         </div>
       )}

@@ -5,18 +5,13 @@ import { useReservation } from "@/context/ReservationContext";
 import { useParams } from "next/navigation";
 import { differenceInDays } from "date-fns";
 import { toast } from "react-toastify";
-import { useUser } from "@/context/UserContext";
 
 const ReservationForm = ({ property, id }) => {
   const { range, resetRange } = useReservation();
-  const { user } = useUser();
-  console.log(user);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [numGuests, setNumGuests] = useState(1);
-
   const { id: propertyId } = useParams();
-  console.log(typeof range.from);
   const startDate = range?.from ? Number(range.from) : "";
   const endDate = range?.to ? Number(range.to) : "";
   const price = property?.rates?.nightly || 0;
@@ -67,7 +62,7 @@ const ReservationForm = ({ property, id }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="px-2 min-w-72">
+    <form onSubmit={handleSubmit} className="px-2 min-w-72 lg:col-start-3">
       <div className="mb-4">
         <label className="block text-gray">Name:</label>
         <input
@@ -108,7 +103,7 @@ const ReservationForm = ({ property, id }) => {
       <div className="flex gap-5 pb-2">
         {range?.from || range?.to ? (
           <button
-            className="bg-red bg-opacity-40 hover:bg-opacity-70 text-gray font-bold py-3 px-7 rounded-full focus:outline-none focus:shadow-outline"
+            className="bg-red bg-opacity-40 hover:bg-opacity-70 text-gray font-bold py-3 px-4 w-full rounded-full focus:outline-none focus:shadow-outline"
             onClick={() => {
               resetRange();
               setName("");
@@ -119,7 +114,7 @@ const ReservationForm = ({ property, id }) => {
           </button>
         ) : null}
         <button
-          className="bg-slateBlue hover:bg-opacity-70 text-gray font-bold py-3 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+          className="bg-persianGreen hover:bg-opacity-70 text-gray font-bold py-3 px-4 rounded-full w-full focus:outline-none focus:shadow-outline"
           type="submit"
         >
           Submit

@@ -8,6 +8,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import PropertyDetails from "@/components/PropertyDetails";
 import Spinner from "@/components/Spinner";
 import PropertyImages from "@/components/PropertyImages";
+import SideBar from "@/components/SideBar";
 
 export default function Page() {
   const { id } = useParams();
@@ -53,8 +54,9 @@ export default function Page() {
             </LinkButton>
           </div>
 
-          <section className="mx-10 grid grid-cols-1 lg:grid-cols-2 gap-5 mt-16 justify-center lg:max-w-6xl lg:mx-auto">
+          <section className="mx-2 flex flex-col md:flex-row md:justify-between md:gap-5 lg:max-w-6xl lg:mx-auto">
             <PropertyDetails property={property} />
+            <SideBar property={property} />
           </section>
         </>
       )}

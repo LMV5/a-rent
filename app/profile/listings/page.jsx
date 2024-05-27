@@ -69,9 +69,11 @@ export default function Page() {
 
   return (
     <>
-      <div className="m-auto text-gray text-xl font-semibold mb-4 mt-4">
+      <div className="text-gray text-xl my-4 mx-5">
         {/* <div className="md:w-3/4 md:pl-4"> */}
-        <h2 className="m-auto  mb-4">Your Listings</h2>
+        <h2 className="text-xs sm:text-xl font-semibold gap-5 my-5">
+          Your Listings
+        </h2>
         {!loading && properties.length === 0 && <p>You have no listings</p>}
         {loading ? (
           <Spinner loading={loading} />
@@ -79,7 +81,7 @@ export default function Page() {
           properties.map((property) => (
             <div
               key={property._id}
-              className="mb-10 grid grid-cols-1 border rounded-lg md:grid-cols-2"
+              className="mb-4 grid grid-cols-1 border rounded-lg md:grid-cols-2 ssm:mx-2"
             >
               <Link href={`/properties/${property._id}`}>
                 <Image

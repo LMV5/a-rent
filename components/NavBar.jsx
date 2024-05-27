@@ -28,7 +28,7 @@ function NavBar() {
   }, []);
 
   return (
-    <nav className="bg-persianGreen">
+    <nav className="bg-persianGreen relative">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-20 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center md:hidden">
@@ -60,9 +60,7 @@ function NavBar() {
           </div>
 
           <div className="flex flex-1 items-center justify-center md:items-stretch md:justify-start text-xl">
-            {/* <!-- Logo --> */}
             <Logo />
-            {/* <!-- Desktop Menu Hidden below md screens --> */}
             <div className="hidden md:ml-6 md:block">
               <div className="flex space-x-2">
                 <LinkButton href="/" style="primary">
@@ -71,9 +69,11 @@ function NavBar() {
                 <LinkButton href="/properties" style="primary">
                   Properties
                 </LinkButton>
-                <LinkButton href="/properties/add" style="primary">
-                  Add property
-                </LinkButton>
+                {session && (
+                  <LinkButton href="/properties/add" style="primary">
+                    Add property
+                  </LinkButton>
+                )}
               </div>
             </div>
           </div>
@@ -87,10 +87,10 @@ function NavBar() {
                     <button
                       onClick={() => signIn(provider.id)}
                       key={index}
-                      className="text-xl flex items-center text-white hover:text-gray hover:bg-cosmicLatte hover:bg-opacity-25 rounded-md px-3 py-4"
+                      className="text-xl flex items-center text-white hover:bg-cosmicLatte hover:bg-opacity-25 rounded-md px-3 py-4"
                     >
-                      <FaGoogle className="text-white mr-2" />
-                      <span>Login or Register</span>
+                      <FaGoogle className="text-white mr-2 mb-1" />
+                      <span>Sign up</span>
                     </button>
                   ))}
               </div>
@@ -139,7 +139,7 @@ function NavBar() {
                 {isProfileMenuOpen && (
                   <div
                     id="user-menu"
-                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-teaGreen py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    className="absolute right-0 z-40 mt-2 w-48 origin-top-right rounded-md bg-teaGreen py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="user-menu-button"

@@ -31,8 +31,10 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="m-auto text-xl text-gray font-semibold mb-4 mt-4">
-      <h1 className="text-xl font-semibold mb-4">Saved Properties</h1>
+    <div className="text-xl text-gray mb-4 mt-4">
+      <h1 className="text-xs sm:text-xl font-semibold gap-5 ml-5 my-5">
+        Saved Properties
+      </h1>
       {loading ? (
         <Spinner loading={loading} />
       ) : (

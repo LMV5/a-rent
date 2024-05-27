@@ -20,13 +20,13 @@ function DateSelector() {
 
   const minBookingLength = 1;
   const maxBookingLength = 14;
-
+  const smallDevice = window.matchMedia("(max-width: 400px)").matches;
   const pastDates = [{ before: new Date().setDate(new Date().getDate() + 1) }];
 
   return (
-    <div className="">
+    <div className="mx-auto">
       <DayPicker
-        className=""
+        className="grid justify-items-center"
         mode="range"
         onSelect={setRange}
         selected={range}
@@ -35,9 +35,10 @@ function DateSelector() {
         fromMonth={new Date()}
         fromDate={new Date()}
         toYear={new Date().getFullYear() + 2}
-        captionLayout="dropdown"
+        captionLayout="buttons"
         numberOfMonths={2}
         disabled={pastDates}
+        withPortal={smallDevice}
       />
     </div>
   );

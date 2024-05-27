@@ -17,15 +17,14 @@ function formatDate(dateString) {
 function ReservationCard({ reservation }) {
   const { guestData, dates, numNights, totalAmount, propertyName } =
     reservation;
-    
+
   return (
-    <div className="border-gray rounded-lg shadow-lg p-5 flex gap-5">
-      <p>
-        <span className="text-bold text-gray text-2xl">{numNights}</span> nights
-        in
-        <span className="text-bold text-gray text-xl"> {propertyName}</span>
+    <div className="border-gray rounded-lg shadow-lg p-5 flex flex-col gap-5 lg:flex-row lg:gap-10">
+      <p className="text-persianGreen">
+        <span className="text-bold text-2xl">{numNights}</span> nights
+        <span className="text-bold text-gray text-xl"> in {propertyName}</span>
       </p>
-      <div className="flex gap-3">
+      <div className="flex mt-2 gap-3 lg:gap-7">
         <div className="flex flex-col gap-2">
           <span className="text-xs">CHECK-IN</span>{" "}
           <span>{formatDate(dates.startDate)}</span>{" "}
@@ -37,8 +36,8 @@ function ReservationCard({ reservation }) {
           <span className="text-sm">until 11:00</span>
         </div>
       </div>
-      <div>
-        <span className="flex gap-5">
+      <div className="py-2 lg:py-0">
+        <span className="flex gap-5 text-persianGreen">
           <FaUserFriends className="pt-1" /> {guestData.numGuests}
         </span>
         <div className="flex flex-col">
@@ -49,10 +48,12 @@ function ReservationCard({ reservation }) {
       </div>
 
       <div className="flex flex-col">
-        <span className="flex gap-5">
-          <FaFileInvoiceDollar className="pt-1" /> Total amount:{" "}
+        <span className="flex gap-5 text-persianGreen">
+          <FaFileInvoiceDollar className="pt-1 hidden" /> Total amount:{" "}
         </span>
-        <span className="text-bold text-gray text-2xl ">€{totalAmount}</span>
+        <span className="text-bold text-persianGreen text-2xl ">
+          €{totalAmount}
+        </span>
       </div>
     </div>
   );

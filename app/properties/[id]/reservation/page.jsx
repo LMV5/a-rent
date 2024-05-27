@@ -34,18 +34,17 @@ function Page() {
     <>
       {loading && <Spinner loading={loading} />}
       {!loading && property && (
-        <>
-          <div className="my-10 ml-10 flex gap-10 text-slateBlue">
+        <div className="flex flex-col border-gray rounded-lg shadow-lg mx-2 mt-10 justify-center lg:max-w-6xl lg:mx-auto">
+          <div className="my-10 ml-10 flex gap-10 text-slateBlue ">
             <p className="text-3xl font-bold ">{property.name}</p>
             <p className="text-3xl font-bold">€{property.rates.nightly}</p>
           </div>
-          <div className="col-start-1 col-end-7 rounded-lg shadow-lg bg-cosmicLatte ">
-            <div className="flex justify-center gap-20">
-              <DateSelector />
-              <ReservationForm id={id} property={property} />
-            </div>
+
+          <div className="grid grid-cols-1 justify-items-center gap-5 lg:grid-cols-3 lg:gap-1">
+            <DateSelector />
+            <ReservationForm id={id} property={property} />
           </div>
-        </>
+        </div>
       )}
     </>
   );

@@ -134,20 +134,20 @@ function SideBar({ property }) {
   };
 
   return (
-    <aside className="">
+    <aside className="flex flex-col my-2">
       {isBookmarked ? (
         <button
           onClick={handleClick}
-          className="bg-red text-teaGreen font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+          className="flex items-center justify-center mx-auto bg-red text-teaGreen text-sm hover:bg-opacity-70 px-4 py-2 rounded-full text-center gap-2"
         >
-          <FaBookmark className="mr-2" /> Remove Bookmark
+          <FaBookmark className="mr-2" /> <span>Remove Bookmark</span>
         </button>
       ) : (
         <button
           onClick={handleClick}
-          className="bg-persianGreen text-teaGreen font-bold w-full py-2 px-4 rounded-full flex items-center justify-center"
+          className="flex items-center justify-center mx-auto bg-persianGreen text-teaGreen text-sm hover:bg-opacity-70 px-4 py-2 rounded-full text-center gap-2"
         >
-          <FaBookmark className="mr-2" /> Bookmark Property
+          <FaBookmark className="mr-2" /> <span>Bookmark Property</span>
         </button>
       )}
 
@@ -186,7 +186,7 @@ function SideBar({ property }) {
         </div>
       </div>
 
-      <div className="bg-periwinkle p-6 rounded-lg shadow-md">
+      {/* <div className="bg-periwinkle p-6 rounded-lg shadow-md">
         <h3 className="text-xl font-bold mb-6">Contact Property Manager</h3>
         {!session ? (
           <p>You must be logged in to send a message</p>
@@ -271,7 +271,7 @@ function SideBar({ property }) {
             </div>
           </form>
         )}
-      </div>
+      </div> */}
     </aside>
   );
 }

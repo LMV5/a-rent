@@ -11,7 +11,7 @@ import Link from "next/link";
 
 function PropertyDetails({ property }) {
   return (
-    <>
+    <div className="flex flex-col md:max-w-5xl">
       <div className="rounded-lg shadow-lg p-5">
         <div className="flex justify-between gap-5">
           <h1 className="text-xl font-bold mb-6">{property.name}</h1>
@@ -48,7 +48,7 @@ function PropertyDetails({ property }) {
       <div className="rounded-lg shadow-lg p-5">
         <h3 className="text-lg font-bold mb-4">Amenities</h3>
 
-        <ul className="m-auto grid grid-cols-1 md:grid-cols-2 list-none">
+        <ul className="m-auto grid grid-cols-1 sm:grid-cols-2 list-none">
           {property.amenities.map((amenity, index) => (
             <li key={index}>
               <FaCheck className="inline-block mr-2 text-persianGreen" />
@@ -58,15 +58,15 @@ function PropertyDetails({ property }) {
         </ul>
       </div>
 
-      <div className="grid my-5 sm:justify-self-center lg:col-start-2">
+      <div className="my-5 grid justify-center lg:inline-block justify-self-center">
         <Link
-          className="text-2xl bg-persianGreen  hover:bg-opacity-70 text-gray px-4 py-2 rounded-full text-center"
+          className="text-xl bg-persianGreen  hover:bg-opacity-70 text-gray px-4 py-2 rounded-full text-center"
           href={`/properties/${property._id}/reservation`}
         >
           Reserve now
         </Link>
       </div>
-    </>
+    </div>
   );
 }
 

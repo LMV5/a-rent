@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* customize react-day-picker */
+
+.rdp-months {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .rdp-months {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}

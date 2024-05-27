@@ -14,7 +14,7 @@ function LinkButton({ children, href, style, pathname }) {
     logo: "flex flex-shrink-0 flex-row items-center",
     viewBtn:
       "block bg-persianGreen text-white text-center py-4 px-6 rounded-xl hover:bg-opacity-75",
-    menuItem: `flex px-4 py-2 text-sm hover:text-slateBlue text-gray ${
+    menuItem: `flex px-3 py-3 text-sm hover:text-slateBlue text-gray ${
       pathname === href ? "bg-teaGreen bg-opacity-50" : ""
     }`,
     dropdownMenu:
