@@ -1,4 +1,5 @@
 import GoogleProvider from "next-auth/providers/google";
+import EmailProvider from "next-auth/providers/email";
 import connectDB from "@/config/database";
 import User from "@/models/User";
 

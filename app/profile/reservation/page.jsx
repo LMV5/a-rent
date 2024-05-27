@@ -13,14 +13,13 @@ export default function Page() {
   const { propertyId } = useParams();
 
   useEffect(() => {
-    const fetchReservations = async () => {
+    const fetchUserReservations = async () => {
       try {
         const res = await fetch(`/api/properties/${propertyId}/reservation`);
         if (res.status === 200) {
           const data = await res.json();
           setReservation(data);
         } else {
-          console.log(res.statusText);
           toast.error("Failed to fetch reservations");
         }
       } catch (error) {
@@ -30,8 +29,32 @@ export default function Page() {
         setLoading(false);
       }
     };
-    fetchReservations();
+    fetchUserReservations();
   }, []);
+
+  // const handleDeleteReservation = async function (reservationId) {
+  //   const confirmed = window.confirm(
+  //     "Are you sure you want do delete this reservation?"
+  //   );
+
+  //   if (!confirmed) return;
+
+  //   try {
+  //     const res = await fetch(`/api/properties/reservation`, {
+  //       method: "DELETE",
+  //     });
+
+  //     if (res.status === 200) {
+  //       toast.success("Reservation Deleted");
+  //       if (onDelete) onDelete(reservationId);
+  //     } else {
+  //       toast.error("Failed to delete reservation");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //     toast.error("Failed to delete reservation");
+  //   }
+  // };
 
   return (
     <div className="max-w-6xl my-4 ">
@@ -55,6 +78,7 @@ export default function Page() {
                 <ReservationCard
                   key={reservation._id}
                   reservation={reservation}
+                  // onDeleteReservation={handleDeleteReservation}
                 />
               ))}
             </>

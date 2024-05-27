@@ -1,11 +1,4 @@
-import {
-  FaCalendarAlt,
-  FaFileInvoiceDollar,
-  FaUserFriends,
-  FaMoon,
-  FaRegClock,
-} from "react-icons/fa";
-// import Link from "next/link";
+import { FaFileInvoiceDollar, FaUserFriends } from "react-icons/fa";
 import LinkButton from "./LinkButton";
 
 function formatDate(dateString) {

@@ -1,5 +1,6 @@
 import LinkButton from "@/components/LinkButton";
 import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import {
   FaHouseUser,
@@ -11,6 +12,8 @@ import {
 
 export default function SideNavigation() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+  const adminId = session?.user?.id === "6617ecaa2c847bd2317ab3e3";
 
   return (
     <div className="flex rounded-md py-1 ssm:flex-col ssm:min-w-max">
@@ -39,16 +42,18 @@ export default function SideNavigation() {
         </LinkButton>
       </div>
 
-      <div className="flex">
-        <LinkButton
-          href="/profile/listings"
-          style="menuItem"
-          pathname={pathname}
-        >
-          <FaClipboardList className=" text-slateBlue" />{" "}
-          <span className="hidden ssm:block ssm:px-3">Your Listings</span>
-        </LinkButton>
-      </div>
+      {adminId && (
+        <div className="flex">
+          <LinkButton
+            href="/profile/listings"
+            style="menuItem"
+            pathname={pathname}
+          >
+            <FaClipboardList className=" text-slateBlue" />{" "}
+            <span className="hidden ssm:block ssm:px-3">Your Listings</span>
+          </LinkButton>
+        </div>
+      )}
 
       <div className="flex px-4 ssm:py-3">
         <button

@@ -5,6 +5,8 @@ import { getSessionUser } from "@/utils/getSessionUser";
 
 // GET /api/:id/reservation/
 
+// for user
+
 export async function GET() {
   try {
     await connectDB();
@@ -15,7 +17,15 @@ export async function GET() {
     }
 
     const { userId } = sessionUser;
-    const reservations = await Reservation.find({ guestId: userId });
+
+    let reservations;
+
+    if (userId === "6617ecaa2c847bd2317ab3e3") {
+      reservations = await Reservation.find({ owner: userId });
+    } else {
+      reservations = await Reservation.find({ guestId: userId });
+    }
+
     return new Response(JSON.stringify(reservations), { status: 200 });
   } catch (error) {
     console.log(error);
@@ -51,11 +61,9 @@ export const POST = async (request, { params }) => {
   }
 };
 
-// // DELETE /api/:id/reservation/
-
 // export const DELETE = async (request, { params }) => {
 //   try {
-//     const reservationId = params.id;
+//     await connectDB();
 //     const sessionUser = await getSessionUser();
 
 //     if (!sessionUser || !sessionUser.userId) {
@@ -63,23 +71,27 @@ export const POST = async (request, { params }) => {
 //     }
 
 //     const { userId } = sessionUser;
-
-//     await connectDB();
-
+//     const data = await request.json();
+//     const { reservationId } = data;
 //     const reservation = await Reservation.findById(reservationId);
-//     if (!reservation)
-//       return new Response("Reservation not found", { status: 404 });
 
-//     if (reservation.owner.toString() !== userId) {
-//       return new Response("Unauthorized", { status: 401 });
+//     if (!reservation) {
+//       return new Response("Reservation not found", {
+//         status: 404,
+//       });
 //     }
 
-//     await reservation.deleteOne();
+//     await Reservation.deleteOne({ _id: reservationId });
 
-//     return new Response("Reservation Deleted", {
-//       status: 200,
-//     });
+//     const user = await User.findById(userId);
+//     user.reservations = user.reservations.filter(
+//       (res) => res.toString() !== reservationId
+//     );
+//     await user.save();
+
+//     return new Response("Reservation deleted successfully", { status: 200 });
 //   } catch (error) {
+//     console.error(error);
 //     return new Response("Something went wrong", { status: 500 });
 //   }
 // };

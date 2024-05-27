@@ -70,7 +70,6 @@ export default function Page() {
   return (
     <>
       <div className="text-gray text-xl my-4 mx-5">
-        {/* <div className="md:w-3/4 md:pl-4"> */}
         <h2 className="text-xs sm:text-xl font-semibold gap-5 my-5">
           Your Listings
         </h2>
@@ -125,7 +124,6 @@ export default function Page() {
             </div>
           ))
         )}
-        {/* </div> */}
       </div>
     </>
   );
