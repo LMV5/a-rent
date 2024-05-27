@@ -58,7 +58,7 @@ function PropertyDetails({ property }) {
         </ul>
       </div>
 
-      <div className="my-5 grid justify-center lg:inline-block justify-self-center">
+      <div className="my-5 grid justify-center justify-self-center">
         <Link
           className="text-xl bg-persianGreen  hover:bg-opacity-70 text-gray px-4 py-2 rounded-full text-center"
           href={`/properties/${property._id}/reservation`}

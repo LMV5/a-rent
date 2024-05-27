@@ -5,6 +5,8 @@ import {
   FaMoon,
   FaRegClock,
 } from "react-icons/fa";
+// import Link from "next/link";
+import LinkButton from "./LinkButton";
 
 function formatDate(dateString) {
   const date = new Date(dateString);
@@ -15,14 +17,18 @@ function formatDate(dateString) {
 }
 
 function ReservationCard({ reservation }) {
-  const { guestData, dates, numNights, totalAmount, propertyName } =
+  const { guestData, dates, numNights, totalAmount, propertyName, property } =
     reservation;
 
   return (
     <div className="border-gray rounded-lg shadow-lg p-5 flex flex-col gap-5 lg:flex-row lg:gap-10">
-      <p className="text-persianGreen">
-        <span className="text-bold text-2xl">{numNights}</span> nights
-        <span className="text-bold text-gray text-xl"> in {propertyName}</span>
+      <p>
+        <span className="text-bold text-2xl text-persianGreen">
+          {numNights} nights{" "}
+        </span>
+        <LinkButton href={`/properties/${property}`} style="property">
+          in {propertyName}
+        </LinkButton>
       </p>
       <div className="flex mt-2 gap-3 lg:gap-7">
         <div className="flex flex-col gap-2">

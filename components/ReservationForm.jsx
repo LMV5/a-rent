@@ -18,6 +18,7 @@ const ReservationForm = ({ property, id }) => {
   const numNights =
     range?.from && range?.to ? differenceInDays(range?.to, range?.from) : 0;
   const totalAmount = numNights * price;
+  const maxNumGuests = property.numGuests;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +35,6 @@ const ReservationForm = ({ property, id }) => {
       rates: { nightly: price },
       totalAmount,
       guestId: id,
-      // guestId: "6620d350928168756b91c3c6",
       guestData: { name, email, numGuests },
     };
 
@@ -90,7 +90,7 @@ const ReservationForm = ({ property, id }) => {
           onChange={(e) => setNumGuests(+e.target.value)}
           className="block w-full px-3 py-3 pr-8 border border-gray rounded leading-tight focus:outline-none focus:shadow-outline-slateBlue focus:border-slateBlue"
         >
-          {Array.from({ length: 4 }, (_, i) => i + 1).map((num) => (
+          {Array.from({ length: maxNumGuests }, (_, i) => i + 1).map((num) => (
             <option className="py-1" value={num} key={num}>
               {num}
             </option>
