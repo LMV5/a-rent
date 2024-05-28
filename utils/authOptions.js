@@ -20,19 +20,26 @@ export const authOptions = {
     async signIn({ profile }) {
       await connectDB();
       const userExists = await User.findOne({ email: profile.email });
+      let role = "user";
+
       if (!userExists) {
         const username = profile.name.slice(0, 20);
         await User.create({
           email: profile.email,
           username,
           image: profile.picture,
+          role: profile.role || "user",
         });
+      } else {
+        const existingUser = await User.findOne({ email: profile.email });
+        role = existingUser.role;
       }
-      return true;
+      return { profile, role };
     },
     async session({ session }) {
       const user = await User.findOne({ email: session.user.email });
       session.user.id = user._id.toString();
+      session.user.role = user.role;
       return session;
     },
   },

@@ -12,8 +12,8 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 function NavBar() {
   const { data: session } = useSession();
+  const admin = session?.user?.role === "admin";
   const profileImage = session?.user?.image;
-
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
@@ -67,7 +67,7 @@ function NavBar() {
               <LinkButton href="/properties" style="primary">
                 Properties
               </LinkButton>
-              {session && (
+              {session && admin && (
                 <LinkButton href="/properties/add" style="primary">
                   Add property
                 </LinkButton>

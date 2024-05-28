@@ -13,7 +13,7 @@ import {
 export default function SideNavigation() {
   const pathname = usePathname();
   const { data: session } = useSession();
-  const adminId = session?.user?.id === "6617ecaa2c847bd2317ab3e3";
+  const admin = session?.user?.role === "admin";
 
   return (
     <div className="flex rounded-md py-1 ssm:flex-col ssm:min-w-max">
@@ -42,7 +42,7 @@ export default function SideNavigation() {
         </LinkButton>
       </div>
 
-      {adminId && (
+      {admin && (
         <div className="flex">
           <LinkButton
             href="/profile/listings"
