@@ -13,6 +13,7 @@ import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 function NavBar() {
   const { data: session } = useSession();
   const profileImage = session?.user?.image;
+  console.log(session);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -25,6 +26,32 @@ function NavBar() {
     };
     setAuthProviders();
   }, []);
+
+  // const handleAdminSignIn = async () => {
+  //   try {
+  //     await signIn("google", {
+  //       email: "marina.lap08@gmail.com",
+  //       // role: "admin",
+  //     });
+  //     window.location.reload();
+  //   } catch (error) {
+  //     console.error("Error signing in as admin:", error);
+  //   }
+  // };
+
+  // const handleAdminSignIn = async () => {
+  //   const session = {
+  //     user: {
+  //       id: "6617ecaa2c847bd2317ab3e3",
+  //       email: "marina.lap08@gmail.com",
+  //       username: "Marina Lapteva",
+  //       role: "admin",
+  //     },
+  //   };
+
+  //   sessionStorage.setItem("session", JSON.stringify(session));
+  //   setSession(session);
+  // };
 
   return (
     <nav className="bg-persianGreen relative px-2 sm:px-6 lg:px-8">
@@ -91,6 +118,15 @@ function NavBar() {
                     <span>Sign up with Google</span>
                   </button>
                 ))}
+            </div>
+            <div className="flex items-center">
+              <button
+                type="button"
+                // onClick={handleAdminSignIn}
+                className="text-sm flex items-center text-white hover:bg-cosmicLatte hover:bg-opacity-25 rounded-md px-3 py-4"
+              >
+                <span>Sign up as Admin</span>
+              </button>
             </div>
           </div>
         )}
@@ -170,5 +206,4 @@ function NavBar() {
     </nav>
   );
 }
-
 export default NavBar;

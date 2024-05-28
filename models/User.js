@@ -30,6 +30,11 @@ const UserSchema = new Schema(
         ref: "Reservation",
       },
     ],
+    role: {
+      type: String,
+      enum: ["user", "admin"],
+      default: "user",
+    },
   },
   {
     timestamps: true,
