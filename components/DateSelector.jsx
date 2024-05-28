@@ -1,23 +1,11 @@
 "use client";
 
-// import { isWithinInterval } from "date-fns";
 import { useReservation } from "@/context/ReservationContext";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 
-// function isAlreadyBooked(range, dateArr) {
-//   return (
-//     range.from &&
-//     range.to &&
-//     dateArr.some((date) =>
-//       isWithinInterval(date, { start: range.from, end: range.to })
-//     )
-//   );
-// }
-
 function DateSelector() {
   const { range, setRange } = useReservation();
-
   const minBookingLength = 1;
   const maxBookingLength = 14;
   const smallDevice = window.matchMedia("(max-width: 400px)").matches;

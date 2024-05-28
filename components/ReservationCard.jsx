@@ -14,7 +14,7 @@ function ReservationCard({ reservation }) {
     reservation;
 
   return (
-    <div className="border-gray rounded-lg shadow-lg p-5 flex flex-col gap-5 lg:flex-row lg:gap-10">
+    <div className="border-gray rounded-lg shadow-lg p-5 flex flex-col gap-5 md:gap-10">
       <p>
         <span className="text-bold text-2xl text-persianGreen">
           {numNights} nights{" "}
@@ -23,7 +23,7 @@ function ReservationCard({ reservation }) {
           in {propertyName}
         </LinkButton>
       </p>
-      <div className="flex mt-2 gap-3 lg:gap-7">
+      <div className="flex mt-2 gap-10 lg:gap-7">
         <div className="flex flex-col gap-2">
           <span className="text-xs">CHECK-IN</span>{" "}
           <span>{formatDate(dates.startDate)}</span>{" "}
@@ -35,24 +35,26 @@ function ReservationCard({ reservation }) {
           <span className="text-sm">until 11:00</span>
         </div>
       </div>
-      <div className="py-2 lg:py-0">
+      <div className="flex py-2 lg:py-0">
         <span className="flex gap-5 text-persianGreen">
-          <FaUserFriends className="pt-1" /> {guestData.numGuests}
+          <FaUserFriends className="hidden pt-1" /> Number of guests:{" "}
+          {guestData.numGuests}
         </span>
+      </div>
+      <div className="flex flex-col gap-5">
         <div className="flex flex-col">
           <p>Reserved by:</p>
           <span>{guestData.name}</span>
           <span>{guestData.email}</span>
         </div>
-      </div>
-
-      <div className="flex flex-col">
-        <span className="flex gap-5 text-persianGreen">
-          <FaFileInvoiceDollar className="pt-1 hidden" /> Total amount:{" "}
-        </span>
-        <span className="text-bold text-persianGreen text-2xl ">
-          €{totalAmount}
-        </span>
+        <div className="flex flex-col">
+          <span className="flex gap-5 text-persianGreen">
+            <FaFileInvoiceDollar className="pt-1 hidden" /> Total amount:{" "}
+          </span>
+          <span className="text-bold text-persianGreen text-2xl ">
+            €{totalAmount}
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -57,14 +57,14 @@ export default function Page() {
   // };
 
   return (
-    <div className="max-w-6xl my-4 ">
+    <div className="my-4 ">
       <h2 className="flex flex-col text-xs sm:text-xl font-semibold gap-5 ml-5 my-4">
         Your reservations
       </h2>
       {loading ? (
         <Spinner loading={loading} />
       ) : (
-        <div className="text-lg pr-3  sm:flex sm:gap-10 lg:flex-col">
+        <div className="text-lg pr-3 grid grid-cols-1 md:grid-cols-2">
           {reservations.length === 0 ? (
             <p className="text-lg">
               You have no reservations yet. Check out our{" "}
