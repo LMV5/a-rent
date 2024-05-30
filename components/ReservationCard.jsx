@@ -14,7 +14,7 @@ function ReservationCard({ reservation }) {
     reservation;
 
   return (
-    <div className="border-gray rounded-lg shadow-lg p-5 flex flex-col gap-5 md:gap-10">
+    <div className="border rounded-lg shadow-lg p-5 flex flex-col gap-5 md:gap-10">
       <p>
         <span className="text-bold text-2xl text-persianGreen">
           {numNights} nights{" "}
@@ -23,7 +23,7 @@ function ReservationCard({ reservation }) {
           in {propertyName}
         </LinkButton>
       </p>
-      <div className="flex mt-2 gap-10 lg:gap-7">
+      <div className="flex mt-2 gap-10 ssm:flex-col sm:flex-row lg:gap-7">
         <div className="flex flex-col gap-2">
           <span className="text-xs">CHECK-IN</span>{" "}
           <span>{formatDate(dates.startDate)}</span>{" "}

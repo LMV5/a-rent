@@ -75,7 +75,7 @@ export default function Page() {
       <h2 className="flex flex-col text-xs sm:text-xl font-semibold gap-5 ml-5 my-4">
         Your reservations
       </h2>
-      <div className="ml-5 my-2">
+      <div className="ml-5 my-5">
         <label htmlFor="sort" className="mr-2">
           Sort by:
         </label>
@@ -85,13 +85,13 @@ export default function Page() {
           onChange={(e) => setSortType(e.target.value)}
         >
           <option value="date">Date</option>
-          <option value="nights">Number of Nights</option>
+          <option value="nights">Nights</option>
         </select>
       </div>
       {loading ? (
         <Spinner loading={loading} />
       ) : (
-        <div className="text-lg pr-3 grid grid-cols-1 md:grid-cols-2">
+        <div className="text-lg grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:pr-5 sm:place-items-center">
           {sortedReservations.length === 0 ? (
             <p className="text-lg">
               You have no reservations yet. Check out our{" "}
