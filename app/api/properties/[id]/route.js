@@ -1,6 +1,7 @@
 import connectDB from "@/config/database";
 import Property from "@/models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
+import cloudinary from "@/config/cloudinary";
 
 // GET /api/properties/:id
 
@@ -30,15 +31,17 @@ export const DELETE = async (request, { params }) => {
       return new Response("User ID is required", { status: 401 });
     }
 
-    const { userId } = sessionUser;
+    const { userId, role } = sessionUser;
 
     await connectDB();
 
     const property = await Property.findById(propertyId);
     if (!property) return new Response("Property not found", { status: 404 });
 
-    if (property.owner.toString() !== userId) {
-      return new Response("Unauthorized", { status: 401 });
+    if (property.owner.toString() !== userId && role !== "admin") {
+      return new Response("You do not have permission to delete property", {
+        status: 401,
+      });
     }
 
     await property.deleteOne();
@@ -51,8 +54,6 @@ export const DELETE = async (request, { params }) => {
   }
 };
 
-// PUT /api/properties/:id
-
 export const PUT = async (request, { params }) => {
   try {
     await connectDB();
@@ -62,14 +63,19 @@ export const PUT = async (request, { params }) => {
       return new Response("User ID is required", { status: 401 });
     }
     const { id } = params;
-    const { userId } = sessionUser;
+    const { userId, role } = sessionUser;
     const formData = await request.formData();
     const amenities = formData.getAll("amenities");
+    const images = formData
+      .getAll("images")
+      .filter((image) => image.name !== "");
     const existingProperty = await Property.findById(id);
+
     if (!existingProperty) {
       return new Response("Property does not exist", { status: 404 });
     }
-    if (existingProperty.owner.toString() !== userId) {
+
+    if (existingProperty.owner.toString() !== userId && role !== "admin") {
       return new Response("Unauthorized", { status: 401 });
     }
 
@@ -99,12 +105,34 @@ export const PUT = async (request, { params }) => {
       owner: userId,
     };
 
-    const updatedProperty = await Property.findByIdAndUpdate(id, propertyData);
+    const imageUploadPromises = images.map(async (image) => {
+      const imageBuffer = await image.arrayBuffer();
+      const imageArray = Array.from(new Uint8Array(imageBuffer));
+      const imageData = Buffer.from(imageArray);
+
+      const imageBase64 = imageData.toString("base64");
+      const result = await cloudinary.uploader.upload(
+        `data:image/png;base64,${imageBase64}`,
+        {
+          folder: "A-Rent",
+        }
+      );
+
+      return result.secure_url;
+    });
+
+    const uploadedImages = await Promise.all(imageUploadPromises);
+    propertyData.images = uploadedImages;
+
+    const updatedProperty = await Property.findByIdAndUpdate(id, propertyData, {
+      new: true,
+    });
 
     return new Response(JSON.stringify(updatedProperty), {
       status: 200,
     });
   } catch (error) {
-    return new Response("Failed to add property", { status: 500 });
+    console.error("Failed to update property:", error);
+    return new Response("Failed to update property", { status: 500 });
   }
 };

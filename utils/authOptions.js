@@ -20,7 +20,7 @@ export const authOptions = {
     async signIn({ profile }) {
       await connectDB();
       const userExists = await User.findOne({ email: profile.email });
-      let role = "user";
+      let role = "admin";
 
       if (!userExists) {
         const username = profile.name.slice(0, 20);
@@ -28,7 +28,7 @@ export const authOptions = {
           email: profile.email,
           username,
           image: profile.picture,
-          role: profile.role || "user",
+          role: profile.role || "admin",
         });
       } else {
         const existingUser = await User.findOne({ email: profile.email });

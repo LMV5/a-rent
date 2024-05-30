@@ -12,7 +12,7 @@ export const GET = async (request, { params }) => {
       return new Response("User ID is required", { status: 400 });
     }
 
-    const properties = await Property.find({ owner: userId });
+    const properties = await Property.find();
 
     return new Response(JSON.stringify(properties), {
       status: 200,

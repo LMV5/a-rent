@@ -11,6 +11,7 @@ export default function Page() {
   const [reservations, setReservation] = useState([]);
   const [loading, setLoading] = useState(true);
   const { propertyId } = useParams();
+  const [sortType, setSortType] = useState("date");
 
   useEffect(() => {
     const fetchUserReservations = async () => {
@@ -30,7 +31,7 @@ export default function Page() {
       }
     };
     fetchUserReservations();
-  }, []);
+  }, [propertyId]);
 
   // const handleDeleteReservation = async function (reservationId) {
   //   const confirmed = window.confirm(
@@ -55,17 +56,43 @@ export default function Page() {
   //     toast.error("Failed to delete reservation");
   //   }
   // };
+  const sortReservations = (reservations, type) => {
+    const sorted = [...reservations];
+    if (type === "date") {
+      sorted.sort(
+        (a, b) => new Date(a.dates.startDate) - new Date(b.dates.startDate)
+      );
+    } else if (type === "nights") {
+      sorted.sort((a, b) => a.numNights - b.numNights);
+    }
+    return sorted;
+  };
+
+  const sortedReservations = sortReservations(reservations, sortType);
 
   return (
     <div className="my-4 ">
       <h2 className="flex flex-col text-xs sm:text-xl font-semibold gap-5 ml-5 my-4">
         Your reservations
       </h2>
+      <div className="ml-5 my-2">
+        <label htmlFor="sort" className="mr-2">
+          Sort by:
+        </label>
+        <select
+          id="sort"
+          value={sortType}
+          onChange={(e) => setSortType(e.target.value)}
+        >
+          <option value="date">Date</option>
+          <option value="nights">Number of Nights</option>
+        </select>
+      </div>
       {loading ? (
         <Spinner loading={loading} />
       ) : (
         <div className="text-lg pr-3 grid grid-cols-1 md:grid-cols-2">
-          {reservations.length === 0 ? (
+          {sortedReservations.length === 0 ? (
             <p className="text-lg">
               You have no reservations yet. Check out our{" "}
               <Link href="/properties" className="underline text-slateBlue">
@@ -74,7 +101,7 @@ export default function Page() {
             </p>
           ) : (
             <>
-              {reservations.map((reservation) => (
+              {sortedReservations.map((reservation) => (
                 <ReservationCard
                   key={reservation._id}
                   reservation={reservation}

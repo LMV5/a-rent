@@ -99,6 +99,25 @@ function PropertyEditForm() {
     }));
   };
 
+  const handleImageChange = (e) => {
+    const { files } = e.target;
+    const updatedImages = [...fields.images];
+
+    if (updatedImages.length + files.length > 3) {
+      alert("You can upload up to 3 images only.");
+      return;
+    }
+
+    for (const file of files) {
+      updatedImages.push(file);
+    }
+
+    setFields((prevFields) => ({
+      ...prevFields,
+      images: updatedImages,
+    }));
+  };
+
   const handleSubmit = async function (e) {
     e.preventDefault();
 
@@ -548,6 +567,22 @@ function PropertyEditForm() {
             placeholder="Phone"
             value={fields.seller_info.phone}
             onChange={handleChange}
+          />
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="images" className="block text-gray font-bold mb-2">
+            Images (Select up to 3 images)
+          </label>
+          <input
+            type="file"
+            id="images"
+            name="images"
+            className="border rounded w-full py-2 px-3"
+            accept="image/*"
+            multiple
+            onChange={handleImageChange}
+            required
           />
         </div>
 

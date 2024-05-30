@@ -69,8 +69,7 @@ export const POST = async (request) => {
       owner: userId,
     };
 
-    const imageUploadPromises = [];
-    for (const image of images) {
+    const imageUploadPromises = images.map(async (image) => {
       const imageBuffer = await image.arrayBuffer();
       const imageArray = Array.from(new Uint8Array(imageBuffer));
       const imageData = Buffer.from(imageArray);
@@ -83,11 +82,11 @@ export const POST = async (request) => {
         }
       );
 
-      imageUploadPromises.push(result.secure_url);
+      return result.secure_url;
+    });
 
-      const uploadedImages = await Promise.all(imageUploadPromises);
-      propertyData.images = uploadedImages;
-    }
+    const uploadedImages = await Promise.all(imageUploadPromises);
+    propertyData.images = uploadedImages;
 
     const newProperty = new Property(propertyData);
     await newProperty.save();
