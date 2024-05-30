@@ -39,9 +39,12 @@ export const DELETE = async (request, { params }) => {
     if (!property) return new Response("Property not found", { status: 404 });
 
     if (property.owner.toString() !== userId && role !== "admin") {
-      return new Response("You do not have permission to delete property", {
-        status: 401,
-      });
+      return new Response(
+        "You do not have permission to delete this property",
+        {
+          status: 401,
+        }
+      );
     }
 
     await property.deleteOne();

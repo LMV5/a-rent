@@ -5,14 +5,13 @@ import { useReservation } from "@/context/ReservationContext";
 import { useParams } from "next/navigation";
 import { differenceInDays } from "date-fns";
 import { toast } from "react-toastify";
-// import { useUser } from "@/context/UserContext";
 
 const ReservationForm = ({ property, id }) => {
   const { range, resetRange } = useReservation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [numGuests, setNumGuests] = useState(1);
-  const { id: propertyId } = useParams();
+  const { id: reservationId } = useParams();
   const startDate = range?.from ? Number(range.from) : "";
   const endDate = range?.to ? Number(range.to) : "";
   const price = property?.rates?.nightly || 0;
@@ -20,12 +19,9 @@ const ReservationForm = ({ property, id }) => {
     range?.from && range?.to ? differenceInDays(range?.to, range?.from) : 0;
   const totalAmount = numNights * price;
   const maxNumGuests = property.numGuests;
-  // const { user } = useUser();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // console.log(user);
 
     const formData = {
       owner: property.owner,
@@ -43,12 +39,7 @@ const ReservationForm = ({ property, id }) => {
     };
 
     try {
-      // if (!user) {
-      //   toast.error("You need to sign up/in to reserve a property");
-      //   return;
-      // }
-
-      const res = await fetch(`/api/properties/${propertyId}/reservation`, {
+      const res = await fetch(`/api/properties/${reservationId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

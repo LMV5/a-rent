@@ -8,7 +8,7 @@ import ReservationCard from "@/components/ReservationCard";
 import { useParams } from "next/navigation";
 
 export default function Page() {
-  const [reservations, setReservation] = useState([]);
+  const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
   const { propertyId } = useParams();
   const [sortType, setSortType] = useState("date");
@@ -19,7 +19,7 @@ export default function Page() {
         const res = await fetch(`/api/properties/${propertyId}/reservation`);
         if (res.status === 200) {
           const data = await res.json();
-          setReservation(data);
+          setReservations(data);
         } else {
           toast.error("Failed to fetch reservations");
         }
@@ -33,29 +33,6 @@ export default function Page() {
     fetchUserReservations();
   }, [propertyId]);
 
-  // const handleDeleteReservation = async function (reservationId) {
-  //   const confirmed = window.confirm(
-  //     "Are you sure you want do delete this reservation?"
-  //   );
-
-  //   if (!confirmed) return;
-
-  //   try {
-  //     const res = await fetch(`/api/properties/reservation`, {
-  //       method: "DELETE",
-  //     });
-
-  //     if (res.status === 200) {
-  //       toast.success("Reservation Deleted");
-  //       if (onDelete) onDelete(reservationId);
-  //     } else {
-  //       toast.error("Failed to delete reservation");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //     toast.error("Failed to delete reservation");
-  //   }
-  // };
   const sortReservations = (reservations, type) => {
     const sorted = [...reservations];
     if (type === "date") {
@@ -105,7 +82,6 @@ export default function Page() {
                 <ReservationCard
                   key={reservation._id}
                   reservation={reservation}
-                  // onDeleteReservation={handleDeleteReservation}
                 />
               ))}
             </>

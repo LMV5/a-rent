@@ -23,7 +23,7 @@ function ReservationCard({ reservation }) {
           in {propertyName}
         </LinkButton>
       </p>
-      <div className="flex mt-2 gap-10 ssm:flex-col sm:flex-row lg:gap-7">
+      <div className="flex mt-2 gap-10 sm:flex-row lg:gap-7">
         <div className="flex flex-col gap-2">
           <span className="text-xs">CHECK-IN</span>{" "}
           <span>{formatDate(dates.startDate)}</span>{" "}
@@ -45,7 +45,12 @@ function ReservationCard({ reservation }) {
         <div className="flex flex-col">
           <p>Reserved by:</p>
           <span>{guestData.name}</span>
-          <span>{guestData.email}</span>
+          <a
+            href={`mailto:${guestData.email}`}
+            className="text-slateBlue underline"
+          >
+            {guestData.email}
+          </a>
         </div>
         <div className="flex flex-col">
           <span className="flex gap-5 text-persianGreen">

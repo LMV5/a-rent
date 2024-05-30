@@ -16,11 +16,11 @@ export default function SideNavigation() {
   const admin = session?.user?.role === "admin";
 
   return (
-    <div className="flex rounded-md py-1 ssm:flex-col ssm:min-w-max">
+    <div className="flex rounded-md py-1 sm:flex-col ssm:min-w-max">
       <div className="flex">
         <LinkButton href="/profile" style="menuItem" pathname={pathname}>
           <FaHouseUser className=" text-slateBlue" />{" "}
-          <span className="hidden ssm:block ssm:px-3">Your Profile</span>
+          <span className="hidden sm:block ssm:px-3">Your Profile</span>
         </LinkButton>
       </div>
 
@@ -31,14 +31,14 @@ export default function SideNavigation() {
           pathname={pathname}
         >
           <FaCalendarAlt className=" text-slateBlue" />{" "}
-          <span className="hidden ssm:block ssm:px-3">Reservations</span>
+          <span className="hidden sm:block ssm:px-3">Reservations</span>
         </LinkButton>
       </div>
 
       <div className="flex">
         <LinkButton href="/profile/saved" style="menuItem" pathname={pathname}>
           <FaBookmark className=" text-slateBlue" />{" "}
-          <span className="hidden ssm:block ssm:px-3">Saved Properties</span>
+          <span className="hidden sm:block ssm:px-3">Saved Properties</span>
         </LinkButton>
       </div>
 
@@ -50,7 +50,7 @@ export default function SideNavigation() {
             pathname={pathname}
           >
             <FaClipboardList className=" text-slateBlue" />{" "}
-            <span className="hidden ssm:block ssm:px-3">Your Listings</span>
+            <span className="hidden sm:block ssm:px-3">Your Listings</span>
           </LinkButton>
         </div>
       )}
@@ -64,7 +64,7 @@ export default function SideNavigation() {
           className="block text-sm text-gray hover:text-slateBlue "
         >
           <FaSignOutAlt className="inline-block text-slateBlue" />{" "}
-          <span className="hidden ssm:inline-block ssm:px-2">Sign Out</span>
+          <span className="hidden sm:inline-block sm:px-2">Sign Out</span>
         </button>
       </div>
     </div>
