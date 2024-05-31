@@ -1,7 +1,7 @@
 # A-RENT 🏠💼.
 A-Rent is a web application that enables property owners to list rental properties and manage reservations. From searching for properties to making reservations.
 
-![h](https://github.com/LMV5/a-rent/assets/111173608/8dc8017f-4982-4f23-aa38-43fd4f122cd7)
+![h](https://github.com/LMV5/a-rent/assets/111173608/00e5c7e7-2b5c-4fd6-9ae2-e58ce5d012d7)
 
 ## Usage:
 - Open [this URL](https://weather-appp1.netlify.app/) in a web browser to launch the application.
