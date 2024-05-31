@@ -27,4 +27,4 @@ A-Rent is a web application that enables property owners to list rental properti
 
 ## Credits:
 
-This project was created by Marina Lapteva.
+This project was created by Marina Lapteva. It was inspired by tutorials and resources available online for learning web development.
