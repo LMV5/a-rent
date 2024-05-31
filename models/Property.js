@@ -1,5 +1,36 @@
 import { Schema, model, models } from "mongoose";
 
+const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+const LocationSchema = new Schema({
+  street: {
+    type: String,
+  },
+  city: {
+    type: String,
+  },
+  country: {
+    type: String,
+  },
+  zipcode: {
+    type: String,
+  },
+});
+
+const SellerInfoSchema = new Schema({
+  name: {
+    type: String,
+  },
+  email: {
+    type: String,
+    match: [emailRegex, "Please fill a valid email address"],
+  },
+  phone: {
+    type: String,
+    match: [/^\+?(\d.*){3,}$/, "Please fill a valid phone number"],
+  },
+});
+
 const PropertySchema = new Schema(
   {
     owner: {
@@ -19,18 +50,8 @@ const PropertySchema = new Schema(
       type: String,
     },
     location: {
-      street: {
-        type: String,
-      },
-      city: {
-        type: String,
-      },
-      country: {
-        type: String,
-      },
-      zipcode: {
-        type: String,
-      },
+      type: LocationSchema,
+      required: true,
     },
     beds: {
       type: Number,
@@ -59,15 +80,7 @@ const PropertySchema = new Schema(
       },
     },
     seller_info: {
-      name: {
-        type: String,
-      },
-      email: {
-        type: String,
-      },
-      phone: {
-        type: String,
-      },
+      type: SellerInfoSchema,
     },
     images: [
       {

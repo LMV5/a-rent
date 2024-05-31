@@ -8,7 +8,6 @@ function DateSelector() {
   const { range, setRange } = useReservation();
   const minBookingLength = 1;
   const maxBookingLength = 14;
-  const smallDevice = window.matchMedia("(max-width: 400px)").matches;
   const pastDates = [{ before: new Date().setDate(new Date().getDate() + 1) }];
 
   return (
@@ -26,7 +25,6 @@ function DateSelector() {
         captionLayout="buttons"
         numberOfMonths={2}
         disabled={pastDates}
-        withPortal={smallDevice}
       />
     </div>
   );

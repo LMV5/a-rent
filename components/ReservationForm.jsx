@@ -11,7 +11,7 @@ const ReservationForm = ({ property, id }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [numGuests, setNumGuests] = useState(1);
-  const { id: reservationId } = useParams();
+  const { id: propertyId } = useParams();
   const startDate = range?.from ? Number(range.from) : "";
   const endDate = range?.to ? Number(range.to) : "";
   const price = property?.rates?.nightly || 0;
@@ -39,7 +39,7 @@ const ReservationForm = ({ property, id }) => {
     };
 
     try {
-      const res = await fetch(`/api/properties/${reservationId}`, {
+      const res = await fetch(`/api/properties/${propertyId}/reservation`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

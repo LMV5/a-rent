@@ -18,29 +18,41 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ profile }) {
-      await connectDB();
-      const userExists = await User.findOne({ email: profile.email });
-      let role = "admin";
+      try {
+        await connectDB();
+        let user = await User.findOne({ email: profile.email });
 
-      if (!userExists) {
-        const username = profile.name.slice(0, 20);
-        await User.create({
-          email: profile.email,
-          username,
-          image: profile.picture,
-          role: profile.role || "admin",
-        });
-      } else {
-        const existingUser = await User.findOne({ email: profile.email });
-        role = existingUser.role;
+        if (!user) {
+          const username = profile.name.slice(0, 20);
+          user = await User.create({
+            email: profile.email,
+            username,
+            image: profile.picture,
+            role: "admin",
+          });
+        }
+
+        return true;
+      } catch (error) {
+        console.error("Error during sign in:", error);
+        return false;
       }
-      return { profile, role };
     },
     async session({ session }) {
-      const user = await User.findOne({ email: session.user.email });
-      session.user.id = user._id.toString();
-      session.user.role = user.role;
-      return session;
+      try {
+        await connectDB();
+        const user = await User.findOne({ email: session.user.email });
+
+        if (user) {
+          session.user.id = user._id.toString();
+          session.user.role = user.role;
+        }
+
+        return session;
+      } catch (error) {
+        console.error("Error during session callback:", error);
+        return session;
+      }
     },
   },
 };

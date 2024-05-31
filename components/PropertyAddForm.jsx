@@ -105,7 +105,7 @@ function PropertyAddForm() {
           <select
             id="type"
             name="type"
-            className="border rounded w-full py-2 px-3"
+            className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
             required
             value={fields.type}
             onChange={handleChange}
@@ -119,7 +119,7 @@ function PropertyAddForm() {
             type="text"
             id="name"
             name="name"
-            className="border rounded w-full py-2 px-3 mb-2"
+            className="border rounded w-full py-2 px-3 mb-2 focus:outline-none focus:border-persianGreen"
             placeholder="eg. Horizon"
             required
             value={fields.name}
@@ -136,7 +136,7 @@ function PropertyAddForm() {
           <textarea
             id="description"
             name="description"
-            className="border rounded w-full py-2 px-3"
+            className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
             rows="4"
             placeholder="Add an optional description of your property"
             value={fields.description}
@@ -150,7 +150,7 @@ function PropertyAddForm() {
             type="text"
             id="street"
             name="location.street"
-            className="border rounded w-full py-2 px-3 mb-2"
+            className="border rounded w-full py-2 px-3 mb-2 focus:outline-none focus:border-persianGreen"
             placeholder="Street"
             value={fields.location.street}
             onChange={handleChange}
@@ -159,7 +159,7 @@ function PropertyAddForm() {
             type="text"
             id="city"
             name="location.city"
-            className="border rounded w-full py-2 px-3 mb-2"
+            className="border rounded w-full py-2 px-3 mb-2 focus:outline-none focus:border-persianGreen"
             placeholder="City"
             required
             value={fields.location.city}
@@ -169,7 +169,7 @@ function PropertyAddForm() {
             type="text"
             id="country"
             name="location.country"
-            className="border rounded w-full py-2 px-3 mb-2"
+            className="border rounded w-full py-2 px-3 mb-2 focus:outline-none focus:border-persianGreen"
             placeholder="Country"
             required
             value={fields.location.country}
@@ -179,7 +179,7 @@ function PropertyAddForm() {
             type="text"
             id="zipcode"
             name="location.zipcode"
-            className="border rounded w-full py-2 px-3 mb-2"
+            className="border rounded w-full py-2 px-3 mb-2 focus:outline-none focus:border-persianGreen"
             placeholder="Zipcode"
             value={fields.location.zipcode}
             onChange={handleChange}
@@ -196,7 +196,7 @@ function PropertyAddForm() {
               id="beds"
               name="beds"
               min="1"
-              className="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
               required
               value={fields.beds}
               onChange={handleChange}
@@ -211,7 +211,7 @@ function PropertyAddForm() {
               id="baths"
               name="baths"
               min="1"
-              className="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
               required
               value={fields.baths}
               onChange={handleChange}
@@ -229,7 +229,7 @@ function PropertyAddForm() {
               id="square_metre"
               name="square_metre"
               min="1"
-              className="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
               required
               value={fields.square_metre}
               onChange={handleChange}
@@ -247,7 +247,7 @@ function PropertyAddForm() {
               id="numGuests"
               name="numGuests"
               min="1"
-              className="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
               required
               value={fields.numGuests}
               onChange={handleChange}
@@ -264,7 +264,7 @@ function PropertyAddForm() {
                 id="amenity_wifi"
                 name="amenities"
                 value="Wifi"
-                className="mr-2"
+                className="mr-2 focus:border-persianGreen"
                 checked={fields.amenities.includes("Wifi")}
                 onChange={handleAmenitiesChange}
               />
@@ -456,7 +456,7 @@ function PropertyAddForm() {
               id="nightly_rate"
               name="rates.nightly"
               min="1"
-              className="border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
               value={fields.rates.nightly}
               onChange={handleChange}
             />
@@ -474,7 +474,7 @@ function PropertyAddForm() {
             type="text"
             id="seller_name"
             name="seller_info.name"
-            className="border rounded w-full py-2 px-3"
+            className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
             placeholder="Name"
             value={fields.seller_info.name}
             onChange={handleChange}
@@ -491,7 +491,7 @@ function PropertyAddForm() {
             type="email"
             id="seller_email"
             name="seller_info.email"
-            className="border rounded w-full py-2 px-3"
+            className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
             placeholder="Email address"
             required
             value={fields.seller_info.email}
@@ -509,7 +509,7 @@ function PropertyAddForm() {
             type="tel"
             id="seller_phone"
             name="seller_info.phone"
-            className="border rounded w-full py-2 px-3"
+            className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
             placeholder="Phone"
             value={fields.seller_info.phone}
             onChange={handleChange}
@@ -524,7 +524,7 @@ function PropertyAddForm() {
             type="file"
             id="images"
             name="images"
-            className="border rounded w-full py-2 px-3"
+            className="border rounded w-full py-2 px-3 focus:outline-none focus:border-persianGreen"
             accept="image/*"
             multiple
             onChange={handleImageChange}
@@ -534,7 +534,7 @@ function PropertyAddForm() {
 
         <div>
           <button
-            className="bg-persianGreen hover:bg-persianGreen hover:bg-opacity-75 text-gray font-bold mpy-2 px-4 mb-4 rounded-full w-full focus:outline-none focus:shadow-outline"
+            className="bg-persianGreen hover:bg-persianGreen hover:bg-opacity-75 text-gray font-bold mpy-2 px-4 mb-4 rounded-full w-full focus:shadow-outline focus:outline-none focus:border-persianGreen"
             type="submit"
           >
             Add Property

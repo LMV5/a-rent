@@ -16,7 +16,7 @@ function PropertyDetails({ property }) {
         <div className="flex justify-between gap-5">
           <h1 className="text-xl font-bold mb-6">{property.name}</h1>
           <p className="text-2xl font-bold text-persianGreen">
-            {`€${property.rates.nightly.toLocaleString()}`}
+            {`€${property.rates?.nightly.toLocaleString()}`}
           </p>
         </div>
 
@@ -49,7 +49,7 @@ function PropertyDetails({ property }) {
         <h3 className="text-lg font-bold mb-4">Amenities</h3>
 
         <ul className="m-auto grid grid-cols-1 sm:grid-cols-2 list-none">
-          {property.amenities.map((amenity, index) => (
+          {property.amenities?.map((amenity, index) => (
             <li key={index}>
               <FaCheck className="inline-block mr-2 text-persianGreen" />
               {amenity}

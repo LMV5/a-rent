@@ -54,6 +54,7 @@ function PropertyEditForm() {
         setFields(propertyData);
       } catch (error) {
         console.error(error);
+        toast.error("Failed to fetch property data");
       } finally {
         setLoading(false);
       }

@@ -1,11 +1,11 @@
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
+if (!apiDomain) {
+  throw new Error("API domain is not defined");
+}
+
 async function fetchProperties() {
   try {
-    if (!apiDomain) {
-      throw new Error("API domain is not defined");
-    }
-
     const res = await fetch(`${apiDomain}/properties`, { cache: "no-cache" });
 
     if (!res.ok) {

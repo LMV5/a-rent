@@ -45,7 +45,7 @@ function SideBar({ property }) {
           setIsBookmarked(data.isBookmarked);
         }
       } catch (error) {
-        console.log(error);
+        console.log("Error checking bookmark status:", error);
       } finally {
         setLoading(false);
       }
@@ -77,7 +77,7 @@ function SideBar({ property }) {
         setIsBookmarked(data.isBookmarked);
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error bookmarking property:", error);
       toast.error("Something went wrong");
     }
   };

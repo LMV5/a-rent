@@ -15,7 +15,7 @@ export const getSessionUser = async () => {
       role: session.user.role,
     };
   } catch (error) {
-    console.log(error);
+    console.error("Error fetching session user:", error);
     return null;
   }
 };

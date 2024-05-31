@@ -6,20 +6,16 @@ import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import Spinner from "@/components/Spinner";
 import { FaRegEdit, FaRegTrashAlt } from "react-icons/fa";
-
 import { toast } from "react-toastify";
 
 export default function Page() {
   const { data: session } = useSession();
-
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserProperties = async (userId) => {
-      if (!userId) {
-        return;
-      }
+      if (!userId) return;
 
       try {
         const res = await fetch(`/api/properties/user/${userId}`);
@@ -27,9 +23,12 @@ export default function Page() {
         if (res.status === 200) {
           const data = await res.json();
           setProperties(data);
+        } else {
+          toast.error("Failed to fetch listings");
         }
       } catch (error) {
         console.log(error);
+        toast.error("Failed to fetch listings");
       } finally {
         setLoading(false);
       }

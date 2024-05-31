@@ -1,5 +1,47 @@
 import { Schema, model, models } from "mongoose";
 
+const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+
+const GuestDataSchema = new Schema({
+  name: {
+    type: String,
+    required: [true, "Guest name is required"],
+  },
+  email: {
+    type: String,
+    required: [true, "Guest email is required"],
+    match: [emailRegex, "Please fill a valid email address"],
+  },
+  numGuests: {
+    type: Number,
+    required: [true, "Number of guests is required"],
+  },
+});
+
+const DatesSchema = new Schema({
+  startDate: {
+    type: Date,
+    required: [true, "Start date is required"],
+  },
+  endDate: {
+    type: Date,
+    required: [true, "End date is required"],
+    validate: {
+      validator: function (value) {
+        return value > this.startDate;
+      },
+      message: "End date must be after start date",
+    },
+  },
+});
+
+const RatesSchema = new Schema({
+  nightly: {
+    type: Number,
+    required: true,
+  },
+});
+
 const ReservationSchema = new Schema(
   {
     owner: {
@@ -13,38 +55,17 @@ const ReservationSchema = new Schema(
       required: true,
     },
     guestData: {
-      name: {
-        type: String,
-        required: [true, "Guest name is required"],
-      },
-      email: {
-        type: String,
-        required: [true, "Guest email is required"],
-      },
-      numGuests: {
-        type: Number,
-        required: [true, "Number of guests is required"],
-      },
+      type: GuestDataSchema,
+      required: true,
     },
     dates: {
-      startDate: {
-        type: Date,
-        required: [true, "Start date is required"],
-      },
-      endDate: {
-        type: Date,
-        required: [true, "End date is required"],
-        validate: {
-          validator: function (value) {
-            return value > this.dates.startDate;
-          },
-          message: "End date must be after start date",
-        },
-      },
+      type: DatesSchema,
+      required: true,
     },
     numNights: {
       type: Number,
       required: true,
+      min: [1, "Number of nights must be at least 1"],
     },
     property: {
       type: Schema.Types.ObjectId,
@@ -53,23 +74,20 @@ const ReservationSchema = new Schema(
     },
     propertyName: {
       type: String,
-      ref: "Property",
       required: true,
     },
     rates: {
-      nightly: {
-        type: Number,
-        required: true,
-      },
+      type: RatesSchema,
+      required: true,
     },
     totalAmount: {
       type: Number,
       required: true,
+      min: [0, "Total amount must be a positive number"],
     },
   },
   {
     timestamps: true,
-    // collection: "Reservations",
   }
 );
 

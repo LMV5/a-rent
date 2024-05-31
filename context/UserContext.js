@@ -18,7 +18,7 @@ function useUser() {
   const context = useContext(UserContext);
 
   if (context === undefined)
-    throw new Error("Context wes used outside provider");
+    throw new Error("Context was used outside provider");
 
   return context;
 }
