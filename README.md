@@ -1,6 +1,8 @@
 # A-RENT 🏠💼.
 A-Rent is a web application that enables property owners to list rental properties and manage reservations. From searching for properties to making reservations.
 
+![h](https://github.com/LMV5/a-rent/assets/111173608/8dc8017f-4982-4f23-aa38-43fd4f122cd7)
+
 ## Usage:
 - Open [this URL](https://weather-appp1.netlify.app/) in a web browser to launch the application.
 - Property Listing: Property owners can list their rental properties by providing detailed information through the user dashboard, edit and delete their listings.
@@ -19,7 +21,7 @@ A-Rent is a web application that enables property owners to list rental properti
 ## Technologies Used:
 - Next.js: A React framework for building server-rendered web applications.
 - React: JavaScript library for building user interfaces.
-- MongoDB: NoSQL database used for storing property and user data.
+- MongoDB + Mongoose: NoSQL database used for storing property and user data.
 - Tailwind CSS: Utility-first CSS framework used for styling the application.
 - NextAuth.js: Authentication library for Next.js applications, used for user authentication and session management.
 - React Toastify: React component for displaying toast notifications.
