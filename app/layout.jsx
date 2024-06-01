@@ -16,9 +16,9 @@ const font = Josefin_Sans({
 });
 
 export const metadata = {
-  title: "A-Rent | Find The Perfect Rental",
+  title: "A-Rent | Find Your Dream Apartment",
   description: "Find Your Dream Apartment",
-  keywords: "rental, find rental, find properties, apartment, hotel, room",
+  keywords: "rental, find rental, find properties, apartment, room",
 };
 
 export default function RootLayout({ children }) {
