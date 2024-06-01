@@ -4,7 +4,7 @@ A-Rent is a web application that enables property owners to list rental properti
 ![h](https://github.com/LMV5/a-rent/assets/111173608/00e5c7e7-2b5c-4fd6-9ae2-e58ce5d012d7)
 
 ## Usage:
-- Open [this URL](https://weather-appp1.netlify.app/) in a web browser to launch the application.
+- Open [this URL](https://a-rent.vercel.app/) in a web browser to launch the application.
 - Property Listing: Property owners can list their rental properties by providing detailed information through the user dashboard, edit and delete their listings.
 - Property owner can view reservations.
 - User Authentication: Users can sign up and log in to access property management functionalities securely.
