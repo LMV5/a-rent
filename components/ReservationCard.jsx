@@ -1,4 +1,8 @@
-import { FaFileInvoiceDollar, FaUserFriends } from "react-icons/fa";
+import {
+  FaFileInvoiceDollar,
+  FaUserFriends,
+  FaRegTrashAlt,
+} from "react-icons/fa";
 import LinkButton from "./LinkButton";
 
 function formatDate(dateString) {
@@ -11,7 +15,7 @@ function formatDate(dateString) {
   return formattedDate;
 }
 
-function ReservationCard({ reservation }) {
+function ReservationCard({ reservation, onDeleteReservation }) {
   const {
     guestData: { name, email, numGuests },
     dates: { startDate, endDate },
@@ -20,6 +24,10 @@ function ReservationCard({ reservation }) {
     propertyName,
     property,
   } = reservation;
+
+  const handleDelete = () => {
+    onDeleteReservation(reservation._id);
+  };
 
   return (
     <div className="border rounded-lg shadow-lg p-5 flex flex-col gap-5">
@@ -66,6 +74,13 @@ function ReservationCard({ reservation }) {
           </span>
         </div>
       </div>
+      <button
+        onClick={handleDelete}
+        className="px-3 py-2 rounded-md mt-2 text-red"
+        type="button"
+      >
+        <FaRegTrashAlt />
+      </button>
     </div>
   );
 }

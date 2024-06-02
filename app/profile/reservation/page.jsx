@@ -5,18 +5,16 @@ import Spinner from "@/components/Spinner";
 import Link from "next/link";
 import { toast } from "react-toastify";
 import ReservationCard from "@/components/ReservationCard";
-import { useParams } from "next/navigation";
 
 export default function Page() {
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { propertyId } = useParams();
   const [sortType, setSortType] = useState("date");
 
   useEffect(() => {
-    const fetchUserReservations = async () => {
+    const fetchReservations = async () => {
       try {
-        const res = await fetch(`/api/properties/${propertyId}/reservation`);
+        const res = await fetch(`/api/reservations`);
         if (res.status === 200) {
           const data = await res.json();
           setReservations(data);
@@ -30,8 +28,8 @@ export default function Page() {
         setLoading(false);
       }
     };
-    fetchUserReservations();
-  }, [propertyId]);
+    fetchReservations();
+  }, []);
 
   const sortReservations = (reservations, type) => {
     const sorted = [...reservations];
@@ -46,6 +44,33 @@ export default function Page() {
   };
 
   const sortedReservations = sortReservations(reservations, sortType);
+
+  const handleDeleteReservation = async function (reservationId) {
+    const confirmed = window.confirm(
+      "Are you sure you want do delete this reservation?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+      const res = await fetch(`/api/reservations/${reservationId}`, {
+        method: "DELETE",
+      });
+
+      if (res.status === 200) {
+        const updatedReservations = reservations.filter(
+          (reservation) => reservation._id !== reservationId
+        );
+        setReservations(updatedReservations);
+        toast.success("Reservation deleted successfully");
+      } else {
+        toast.error("Failed to delete reservation");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete reservation");
+    }
+  };
 
   return (
     <div className="my-4 ">
@@ -82,6 +107,7 @@ export default function Page() {
                 <ReservationCard
                   key={reservation._id}
                   reservation={reservation}
+                  onDeleteReservation={handleDeleteReservation}
                 />
               ))}
             </>

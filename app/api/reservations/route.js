@@ -3,8 +3,6 @@ import Reservation from "@/models/Reservation";
 import User from "@/models/User";
 import { getSessionUser } from "@/utils/getSessionUser";
 
-// GET /api/:id/reservation/
-
 export async function GET() {
   try {
     await connectDB();
