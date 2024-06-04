@@ -30,7 +30,7 @@ function ReservationCard({ reservation, onDeleteReservation }) {
   };
 
   return (
-    <div className="border rounded-lg shadow-lg p-5 flex flex-col gap-5">
+    <div className="hover:bg-persianGreen hover:bg-opacity-5 hover:transition-all hover:delay-50 border hover:scale-105 rounded-lg shadow-lg p-5 flex flex-col lg:flex-row lg:min-w-[55rem] lg:justify-between gap-5">
       <p>
         <span className="text-bold text-2xl text-persianGreen">
           {numNights} nights{" "}
@@ -53,8 +53,7 @@ function ReservationCard({ reservation, onDeleteReservation }) {
       </div>
       <div className="flex py-2 lg:py-0">
         <span className="flex gap-5 text-persianGreen">
-          <FaUserFriends className="hidden pt-1" /> Number of guests:{" "}
-          {numGuests}
+          <FaUserFriends className="hidden pt-1" /> Guests: {numGuests}
         </span>
       </div>
       <div className="flex flex-col gap-5">

@@ -1,30 +1,7 @@
 import connectDB from "@/config/database";
-import Property from "@/models/Property";
 import Reservation from "@/models/Reservation";
+import User from "@/models/User";
 import { getSessionUser } from "@/utils/getSessionUser";
-
-// DELETE /api/reservations/:reservationId
-
-export const DELETE = async (request, { params }) => {
-  try {
-    await connectDB();
-    const { reservationId } = params;
-
-    if (!reservationId) {
-      return new Response("Reservation ID is required", { status: 401 });
-    }
-
-    const reservation = await Reservation.findByIdAndDelete(reservationId);
-
-    if (!reservation)
-      return new Response("Reservation not found", { status: 404 });
-
-    return new Response("Reservation deleted successfully", { status: 200 });
-  } catch (error) {
-    console.error("Error deleting reservation:", error);
-    return new Response("Something went wrong", { status: 500 });
-  }
-};
 
 export const POST = async (request, { params }) => {
   try {

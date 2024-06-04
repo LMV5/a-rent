@@ -93,7 +93,7 @@ export default function Page() {
       {loading ? (
         <Spinner loading={loading} />
       ) : (
-        <div className="text-lg grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 sm:pr-5 sm:place-items-center">
+        <div className="text-lg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-5 sm:pr-5 sm:place-items-center">
           {sortedReservations.length === 0 ? (
             <p className="text-lg">
               You have no reservations yet. Check out our{" "}
