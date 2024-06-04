@@ -6,13 +6,14 @@ A-Rent is a web application that enables property owners to list rental properti
 ## Usage:
 - Open [this URL](https://a-rent.vercel.app/) in a web browser to launch the application.
 - Property Listing: Property owners can list their rental properties by providing detailed information through the user dashboard, edit and delete their listings.
-- Property owner can view reservations.
+- Property owner can view and delete reservations.
 - User Authentication: Users can sign up and log in to access property management functionalities securely.
 - Bookmarking: Users can add properties to their bookmarks for easy access later.
 - Social Sharing: Users can share property listings via social media platforms like Facebook, Twitter, Telegram, and through email.
 
 ## Features:
 - Property Listing: Property owners can easily list their rental properties, providing detailed information such as description, amenities, rates, and contact information.
+- Property owner can view and delete reservations.
 - User Authentication: A secure authentication system ensures that only authorized users can access property management functionalities.
 - Bookmarking: Users can bookmark their favorite properties for quick access later.
 - Social Sharing: Users can share property listings via social media platforms to spread the word or recommend properties to friends and family.
