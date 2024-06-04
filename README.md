@@ -1,5 +1,5 @@
 # A-RENT 🏠💼.
-A-Rent is a web application that enables property owners to list rental properties and manage reservations. From searching for properties to making reservations.
+A-Rent is a web application that enables property owners to list rental properties and manage reservations.
 
 ![h](https://github.com/LMV5/a-rent/assets/111173608/00e5c7e7-2b5c-4fd6-9ae2-e58ce5d012d7)
 
