@@ -5,8 +5,11 @@ import { useReservation } from "@/context/ReservationContext";
 import { useParams } from "next/navigation";
 import { differenceInDays } from "date-fns";
 import { toast } from "react-toastify";
+import { useSession } from "next-auth/react";
 
 const ReservationForm = ({ property, id }) => {
+  const { data: session } = useSession();
+  const userId = session?.user?.id;
   const { range, resetRange } = useReservation();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -22,6 +25,11 @@ const ReservationForm = ({ property, id }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!userId) {
+      toast.error("You need to sign in to reserve a property");
+      return;
+    }
 
     const formData = {
       owner: property.owner,

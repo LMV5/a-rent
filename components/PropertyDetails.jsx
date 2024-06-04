@@ -6,6 +6,8 @@ import {
   FaRulerCombined,
   FaCheck,
   FaUserFriends,
+  FaMapMarkerAlt,
+  FaInfo,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -42,7 +44,23 @@ function PropertyDetails({ property }) {
           </p>
         </div>
 
-        <p className="text-gray-500 mb-4 text-center">{property.description}</p>
+        <p className="text-gray mb-4 text-center">{property.description}</p>
+
+        <div className="text-persianGreen">
+          <FaMapMarkerAlt className="inline-block mr-2 pb-1" />
+          <span className="">
+            {" "}
+            {property.location.street} {property.location.city}
+          </span>
+        </div>
+        {/* <div className="text-gray">
+          <FaInfo className="inline-block mr-2 pb-1" />
+          <span className="">
+            {" "}
+            Contact me: {property.seller_info.name} {property.seller_info.email}{" "}
+            {property.seller_info.phone}
+          </span>
+        </div> */}
       </div>
 
       <div className="rounded-lg shadow-lg p-5">
